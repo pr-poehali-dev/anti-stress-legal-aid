@@ -67,11 +67,21 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
     
-    if not bot_token or not chat_id:
+    print(f"DEBUG: bot_token exists: {bool(bot_token)}")
+    print(f"DEBUG: chat_id: {chat_id}")
+    
+    if not bot_token:
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'Настройки Telegram не настроены'})
+            'body': json.dumps({'error': 'TELEGRAM_BOT_TOKEN не настроен'})
+        }
+    
+    if not chat_id:
+        return {
+            'statusCode': 500,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'TELEGRAM_CHAT_ID не настроен'})
         }
     
     # Формируем сообщение
@@ -94,6 +104,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     # Отправляем в Telegram
     try:
         telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        print(f"DEBUG: Sending to Telegram URL: {telegram_url[:50]}...")
         
         data = {
             'chat_id': chat_id,
@@ -110,12 +121,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         )
         
         with urllib.request.urlopen(req, timeout=10) as response:
-            telegram_response = json.loads(response.read().decode('utf-8'))
+            response_text = response.read().decode('utf-8')
+            print(f"DEBUG: Telegram response: {response_text}")
+            telegram_response = json.loads(response_text)
             
             if not telegram_response.get('ok'):
+                print(f"ERROR: Telegram API error: {telegram_response}")
                 raise Exception(f"Telegram API error: {telegram_response}")
     
     except Exception as e:
+        print(f"ERROR: Exception in Telegram send: {str(e)}")
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
