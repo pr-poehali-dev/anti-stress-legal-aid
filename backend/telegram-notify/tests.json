@@ -1,0 +1,62 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": "",
+      "bodyMatcher": "exact"
+    },
+    {
+      "name": "Test successful order submission",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Петров",
+        "contact": "+7 (999) 123-45-67",
+        "service": "Авторские права",
+        "urgency": "Срочно",
+        "message": "Нарушение авторских прав на сайте",
+        "timestamp": "2024-01-15 14:30"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test invalid service rejection",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Петров",
+        "contact": "+7 (999) 123-45-67",
+        "service": "Другая услуга",
+        "urgency": "Неделя"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "Доступна только тема \"Авторские права\""
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing required fields",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "",
+        "contact": "",
+        "service": ""
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "Заполните все обязательные поля"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -26,7 +26,7 @@ export default function ContactModal({ isOpen, onClose, service = '', title = '�
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     contact: '',
-    service: service,
+    service: service || 'Авторские права',
     urgency: '',
     message: ''
   });
@@ -37,24 +37,41 @@ export default function ContactModal({ isOpen, onClose, service = '', title = '�
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Имитация отправки
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Отправляем в Telegram
+      const response = await fetch('https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toLocaleString('ru-RU')
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Сброс формы и закрытие модального окна
+        setFormData({
+          name: '',
+          contact: '',
+          service: service || 'Авторские права',
+          urgency: '',
+          message: ''
+        });
+        onClose();
+        alert('Спасибо! Ваша заявка отправлена в Telegram. Свяжемся с вами в течение часа.');
+      } else {
+        throw new Error(result.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      alert('Произошла ошибка при отправке заявки. Попробуйте еще раз или свяжитесь с нами напрямую.');
+    }
     
-    console.log('Заявка отправлена:', formData);
-    
-    // Сброс формы и закрытие модального окна
-    setFormData({
-      name: '',
-      contact: '',
-      service: service,
-      urgency: '',
-      message: ''
-    });
     setIsSubmitting(false);
-    onClose();
-    
-    // Здесь можно добавить уведомление об успехе
-    alert('Спасибо! Ваша заявка отправлена. Свяжемся с вами в течение часа.');
   };
 
   return (
@@ -105,11 +122,7 @@ export default function ContactModal({ isOpen, onClose, service = '', title = '�
                 <SelectValue placeholder="Выберите услугу" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="analysis">Анализ претензии — 5000 ₽</SelectItem>
-                <SelectItem value="consultation">Экспресс-консультация — 3000 ₽</SelectItem>
-                <SelectItem value="pretrial">Досудебное решение</SelectItem>
-                <SelectItem value="court">Судебная защита</SelectItem>
-                <SelectItem value="other">Другое</SelectItem>
+                <SelectItem value="Авторские права">Авторские права</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -124,10 +137,10 @@ export default function ContactModal({ isOpen, onClose, service = '', title = '�
                 <SelectValue placeholder="Когда нужен ответ?" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="urgent">Срочно — в течение часа</SelectItem>
-                <SelectItem value="today">Сегодня</SelectItem>
-                <SelectItem value="tomorrow">Завтра</SelectItem>
-                <SelectItem value="week">В течение недели</SelectItem>
+                <SelectItem value="Срочно">Срочно — в течение часа</SelectItem>
+                <SelectItem value="Сегодня">Сегодня</SelectItem>
+                <SelectItem value="Завтра">Завтра</SelectItem>
+                <SelectItem value="Неделя">В течение недели</SelectItem>
               </SelectContent>
             </Select>
           </div>
