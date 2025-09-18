@@ -8,8 +8,17 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
   return (
-    <section id="services" className="py-20 bg-white/50">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-20 bg-white/50 overflow-hidden">
+      {/* Фоновое изображение для услуг */}
+      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full z-0">
+        <img 
+          src="/img/62ca6091-9ecc-4110-a055-0f51b3d3149d.jpg"
+          alt="Юридическая консультация"
+          className="w-full h-full object-cover opacity-5"
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4">
             3 шага — и претензия больше не ваша проблема

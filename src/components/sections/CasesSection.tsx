@@ -4,8 +4,18 @@ import Icon from '@/components/ui/icon';
 
 export default function CasesSection() {
   return (
-    <section id="cases" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="cases" className="relative py-20 overflow-hidden">
+      {/* Фоновое изображение для кейсов */}
+      <div className="absolute left-0 top-0 w-full h-full z-0">
+        <img 
+          src="/img/5bd158e9-1dc0-469e-8490-735099fcabac.jpg"
+          alt="Успешные кейсы и истории клиентов"
+          className="w-full h-full object-cover opacity-5"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 to-white/90"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4">
             Реальные кейсы — реальная экономия

@@ -51,8 +51,18 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto text-center max-w-4xl">
+    <section className="relative py-20 px-4 overflow-hidden">
+      {/* Фоновое изображение */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/img/ddb7af76-0d7c-45f8-96b8-1e7c200c6fab.jpg"
+          alt="Профессиональная юридическая помощь"
+          className="w-full h-full object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 to-white/95"></div>
+      </div>
+      
+      <div className="container mx-auto text-center max-w-4xl relative z-10">
         <Badge className="mb-6 bg-professional-100 text-professional-700 border-professional-200">
           Не паникуйте — есть решение
         </Badge>
