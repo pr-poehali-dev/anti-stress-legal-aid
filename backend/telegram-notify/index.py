@@ -63,9 +63,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'body': json.dumps({'error': 'Доступна только тема "Авторские права"'})
         }
     
-    # Получаем настройки Telegram
-    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+    # Получаем настройки Telegram (используем новые секреты)
+    bot_token = os.environ.get('TELEGRAM_BOT_TOKEN_NEW') or os.environ.get('TELEGRAM_BOT_TOKEN')
+    chat_id = os.environ.get('TELEGRAM_CHAT_ID_NEW') or os.environ.get('TELEGRAM_CHAT_ID')
     
     print(f"DEBUG: bot_token exists: {bool(bot_token)}")
     print(f"DEBUG: chat_id: {chat_id}")
