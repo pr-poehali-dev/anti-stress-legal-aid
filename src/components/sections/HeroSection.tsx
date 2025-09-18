@@ -66,15 +66,15 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
         <Badge className="mb-6 bg-professional-100 text-professional-700 border-professional-200">
           Не паникуйте — есть решение
         </Badge>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight">
-          Получили претензию по авторским правам?
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight tracking-tight">
+          Получили претензию<br className="hidden sm:block"/> по авторским правам?
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-[#d70e0e] px-2">
-          Во первых !!!Не платите!!! Не паникуйте!!! Скорее всего её в 99% можно оспорить.
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 font-medium text-[#d70e0e] px-2 leading-relaxed">
+          Во‑первых <strong>НЕ ПЛАТИТЕ!</strong> Не паникуйте! Скорее всего её в 99% можно оспорить.
         </p>
-        <p className="text-base sm:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2">
+        <p className="text-sm sm:text-base md:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed">
           Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
-          9 из 10 таких писем — это шантаж, ошибка или раздутая сумма.
+          9 из 10 таких писем&nbsp;— это шантаж, ошибка или раздутая сумма.
         </p>
         
         {/* Animated Stats */}
@@ -103,14 +103,14 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <div className="text-sm text-trust-500 mt-1">на одно дело</div>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2">
-          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-base md:text-lg px-4 md:px-8 py-4 md:py-6 w-full sm:w-auto" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
-            <Icon name="FileCheck" className="mr-2" size={20} />
-            Анализ претензии — 5000 ₽
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2 max-w-2xl mx-auto">
+          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto min-h-[56px] font-medium tracking-wide" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
+            <Icon name="FileCheck" className="mr-2 flex-shrink-0" size={18} />
+            <span className="whitespace-nowrap">Анализ претензии&nbsp;— 5000&nbsp;₽</span>
           </Button>
-          <Button variant="outline" size="lg" className="text-base md:text-lg px-4 md:px-8 py-4 md:py-6 border-professional-300 w-full sm:w-auto" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
-            <Icon name="Phone" className="mr-2" size={20} />
-            Экспресс-консультация — 3000 ₽
+          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-professional-300 hover:bg-professional-50 w-full sm:w-auto min-h-[56px] font-medium tracking-wide" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
+            <Icon name="Phone" className="mr-2 flex-shrink-0" size={18} />
+            <span className="whitespace-nowrap">Экспресс‑консультация&nbsp;— 3000&nbsp;₽</span>
           </Button>
         </div>
       </div>

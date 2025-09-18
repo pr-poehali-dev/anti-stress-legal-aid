@@ -28,9 +28,9 @@ export default function Header({ onContactClick }: HeaderProps) {
           
           {/* Мобильное меню */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button size="sm" className="bg-professional-600 hover:bg-professional-700 text-xs px-3" onClick={onContactClick}>
-              <Icon name="MessageCircle" className="mr-1" size={12} />
-              Связаться
+            <Button size="sm" className="bg-professional-600 hover:bg-professional-700 text-xs px-3 py-2 min-h-[36px] font-medium" onClick={onContactClick}>
+              <Icon name="MessageCircle" className="mr-1 flex-shrink-0" size={14} />
+              <span className="whitespace-nowrap">Связаться</span>
             </Button>
             <Button 
               variant="ghost" 
