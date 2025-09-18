@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import AnimatedSection from '@/components/ui/animated-section';
 
 interface CountersState {
   savedMoney: number;
@@ -63,23 +64,35 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
       </div>
       
       <div className="container mx-auto text-center max-w-4xl relative z-10">
-        <Badge className="mb-6 bg-professional-100 text-professional-700 border-professional-200">
-          Не паникуйте — есть решение
-        </Badge>
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight tracking-tight">
-          Получили претензию<br className="hidden sm:block"/> по авторским правам?
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 font-medium text-[#d70e0e] px-2 leading-relaxed">
-          Во‑первых <strong>НЕ ПЛАТИТЕ!</strong> Не паникуйте! Скорее всего её в 99% можно оспорить.
-        </p>
-        <p className="text-sm sm:text-base md:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed">
-          Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
-          9 из 10 таких писем&nbsp;— это шантаж, ошибка или раздутая сумма.
-        </p>
+        <AnimatedSection animation="fade-in" delay={100}>
+          <Badge className="mb-6 bg-professional-100 text-professional-700 border-professional-200">
+            Не паникуйте — есть решение
+          </Badge>
+        </AnimatedSection>
+        
+        <AnimatedSection animation="fade-up" delay={200}>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight tracking-tight">
+            Получили претензию<br className="hidden sm:block"/> по авторским правам?
+          </h1>
+        </AnimatedSection>
+        
+        <AnimatedSection animation="fade-up" delay={300}>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 font-medium text-[#d70e0e] px-2 leading-relaxed">
+            Во‑первых <strong>НЕ ПЛАТИТЕ!</strong> Не паникуйте! Скорее всего её в 99% можно оспорить.
+          </p>
+        </AnimatedSection>
+        
+        <AnimatedSection animation="fade-up" delay={400}>
+          <p className="text-sm sm:text-base md:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed">
+            Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
+            9 из 10 таких писем&nbsp;— это шантаж, ошибка или раздутая сумма.
+          </p>
+        </AnimatedSection>
         
         {/* Animated Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 max-w-4xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+        <AnimatedSection animation="scale-in" delay={500}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 max-w-4xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.savedMoney.toLocaleString('ru-RU')} ₽
             </div>
@@ -87,7 +100,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <div className="text-sm text-trust-500 mt-1">за все время работы</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.closedCases}+
             </div>
@@ -95,24 +108,28 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <div className="text-sm text-trust-500 mt-1">успешно завершены</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.avgSavings.toLocaleString('ru-RU')} ₽
             </div>
             <div className="text-trust-600 font-medium">Средняя экономия</div>
             <div className="text-sm text-trust-500 mt-1">на одно дело</div>
           </div>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2 max-w-2xl mx-auto">
-          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto min-h-[56px] font-medium tracking-wide" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
+          </div>
+        </AnimatedSection>
+        
+        <AnimatedSection animation="fade-up" delay={600}>
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2 max-w-2xl mx-auto">
+          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto min-h-[56px] font-medium tracking-wide transition-bounce hover-scale animate-pulse-glow" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
             <Icon name="FileCheck" className="mr-2 flex-shrink-0" size={18} />
             <span className="whitespace-nowrap">Анализ претензии&nbsp;— 5000&nbsp;₽</span>
           </Button>
-          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-professional-300 hover:bg-professional-50 w-full sm:w-auto min-h-[56px] font-medium tracking-wide" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
+          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-professional-300 hover:bg-professional-50 w-full sm:w-auto min-h-[56px] font-medium tracking-wide transition-bounce hover-scale" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
             <Icon name="Phone" className="mr-2 flex-shrink-0" size={18} />
             <span className="whitespace-nowrap">Экспресс‑консультация&nbsp;— 3000&nbsp;₽</span>
           </Button>
-        </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

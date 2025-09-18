@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import AnimatedSection from '@/components/ui/animated-section';
 
 interface ServicesSectionProps {
   onModalOpen: (service: string, title: string) => void;
@@ -19,14 +20,14 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-8 md:mb-16">
+        <AnimatedSection animation="fade-up" className="text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4 px-2">
             3 шага — и претензия больше не ваша проблема
           </h2>
           <p className="text-base sm:text-lg text-trust-600 max-w-2xl mx-auto px-2">
             Четкий алгоритм без сюрпризов и скрытых платежей
           </p>
-        </div>
+        </AnimatedSection>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           <Card className="border-2 border-professional-100 hover:border-professional-200 transition-all duration-300 hover:shadow-lg">

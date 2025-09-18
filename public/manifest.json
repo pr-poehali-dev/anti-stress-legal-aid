@@ -1,0 +1,86 @@
+{
+  "name": "ПравоПомощь 24/7 — Защита авторских прав",
+  "short_name": "ПравоПомощь",
+  "description": "Профессиональная защита авторских прав в России. Анализ претензий за 24-48 часов от 5000₽. Консультации, представительство в суде.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ru",
+  "categories": ["business", "productivity", "education"],
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/img/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/img/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/img/pwa-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/pwa-icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/pwa-icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/pwa-icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/pwa-screenshot.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Анализ претензии",
+      "short_name": "Анализ",
+      "description": "Заказать анализ претензии по авторским правам",
+      "url": "/?action=analysis",
+      "icons": [
+        {
+          "src": "/img/pwa-icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Консультация",
+      "short_name": "Консультация",
+      "description": "Экспресс-консультация юриста",
+      "url": "/?action=consultation",
+      "icons": [
+        {
+          "src": "/img/pwa-icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
