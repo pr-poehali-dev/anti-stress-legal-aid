@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test chat ID detection",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "bot_token": "123456789:test_token"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "chat_ids": "array",
+        "total_found": "number",
+        "instruction": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing token",
+      "method": "POST",
+      "path": "/",
+      "body": {},
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test token validation with valid format",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "bot_token": "123456789:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
+        "chat_id": "123456789"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token_valid": "boolean",
+        "chat_id_valid": "boolean",
+        "errors": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test invalid token format",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "bot_token": "invalid_token",
+        "chat_id": "123456789"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token_valid": false,
+        "errors": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing parameters",
+      "method": "POST",
+      "path": "/",
+      "body": {},
+      "expectedStatus": 200,
+      "expectedBody": {
+        "errors": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

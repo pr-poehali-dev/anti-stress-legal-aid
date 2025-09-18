@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test get logs",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "logs": "array",
+        "total": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test log notification",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "channel": "telegram",
+        "status": "success",
+        "recipient": "test@example.com",
+        "subject": "Test notification",
+        "message": "Test message"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "log_id": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

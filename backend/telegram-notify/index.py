@@ -2,7 +2,31 @@ import json
 import os
 import urllib.request
 import urllib.parse
+import requests
 from typing import Dict, Any
+from datetime import datetime
+
+def log_notification(channel: str, status: str, recipient: str, subject: str, message: str, error: str = None, metadata: dict = None):
+    """Log notification attempt to monitoring system"""
+    try:
+        log_data = {
+            'channel': channel,
+            'status': status,
+            'recipient': recipient,
+            'subject': subject,
+            'message': message[:500],  # Limit message length
+            'error_message': error,
+            'metadata': metadata or {}
+        }
+        
+        # Try to send to log function (don't fail main function if logging fails)
+        requests.post(
+            'https://functions.poehali.dev/notification-logs',
+            json=log_data,
+            timeout=5
+        )
+    except:
+        pass  # Logging failure shouldn't break main functionality
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
@@ -142,10 +166,18 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             
             if not telegram_response.get('ok'):
                 print(f"ERROR: Telegram API error: {telegram_response}")
+                log_notification('telegram', 'failed', chat_id, f'Заказ от {name}', telegram_message, 
+                               str(telegram_response), {'service': service, 'urgency': urgency})
                 raise Exception(f"Telegram API error: {telegram_response}")
+            else:
+                # Success logging
+                log_notification('telegram', 'success', chat_id, f'Заказ от {name}', telegram_message, 
+                               None, {'service': service, 'urgency': urgency})
     
     except Exception as e:
         print(f"ERROR: Exception in Telegram send: {str(e)}")
+        log_notification('telegram', 'error', chat_id, f'Заказ от {name}', telegram_message, 
+                       str(e), {'service': service, 'urgency': urgency})
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
