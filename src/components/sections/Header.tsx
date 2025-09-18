@@ -48,6 +48,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <>
                 <a href="#services" className="text-trust-600 hover:text-professional-600 transition-colors">Услуги</a>
                 <a href="#cases" className="text-trust-600 hover:text-professional-600 transition-colors">Кейсы</a>
+                <Link to="/blog" className="text-trust-600 hover:text-professional-600 transition-colors">Блог</Link>
                 <a href="#faq" className="text-trust-600 hover:text-professional-600 transition-colors">Вопросы</a>
               </>
             ) : (
@@ -94,6 +95,13 @@ export default function Header({ onContactClick }: HeaderProps) {
                   >
                     Кейсы
                   </a>
+                  <Link 
+                    to="/blog" 
+                    className="text-trust-600 hover:text-professional-600 transition-colors py-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Блог
+                  </Link>
                   <a 
                     href="#faq" 
                     className="text-trust-600 hover:text-professional-600 transition-colors py-2"
