@@ -181,6 +181,13 @@ export default function Index() {
                     5000 ₽ засчитываются при дальнейшем сотрудничестве
                   </p>
                 </div>
+                
+                <div className="mt-6">
+                  <Button className="w-full bg-professional-600 hover:bg-professional-700 text-white font-medium">
+                    <Icon name="FileCheck" className="mr-2" size={16} />
+                    Заказать анализ — 5000 ₽
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
@@ -251,6 +258,17 @@ export default function Index() {
                     90% дел закрываются без суда за 1-2 недели
                   </p>
                 </div>
+                
+                <div className="mt-6 space-y-3">
+                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium">
+                    <Icon name="MessageSquare" className="mr-2" size={16} />
+                    Досудебное решение
+                  </Button>
+                  <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50">
+                    <Icon name="Phone" className="mr-2" size={16} />
+                    Узнать стоимость
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
@@ -282,6 +300,27 @@ export default function Index() {
                       <span>Апелляции при необходимости</span>
                     </li>
                   </ul>
+                  
+                  <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon name="AlertCircle" className="text-red-600" size={16} />
+                      <span className="text-sm font-semibold text-red-700">Серьезные дела</span>
+                    </div>
+                    <p className="text-xs text-trust-600">
+                      Полное сопровождение во всех инстанциях
+                    </p>
+                  </div>
+                  
+                  <div className="mt-6 space-y-3">
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium">
+                      <Icon name="Gavel" className="mr-2" size={16} />
+                      Судебная защита
+                    </Button>
+                    <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50">
+                      <Icon name="Calculator" className="mr-2" size={16} />
+                      Рассчитать стоимость
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
