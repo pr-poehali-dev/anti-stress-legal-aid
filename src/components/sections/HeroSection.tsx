@@ -52,16 +52,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className="relative py-12 md:py-20 px-4 overflow-hidden">
-      {/* Фоновое изображение */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/img/ddb7af76-0d7c-45f8-96b8-1e7c200c6fab.jpg"
-          alt="Профессиональная юридическая помощь"
-          className="w-full h-full object-cover opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 to-white/95"></div>
-      </div>
+    <section className="relative py-12 md:py-20 px-4 bg-gradient-to-br from-slate-50 via-white to-professional-50/30">
       
       <div className="container mx-auto text-center max-w-4xl relative z-10">
         <AnimatedSection animation="fade-in" delay={100}>
@@ -77,22 +68,26 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
         </AnimatedSection>
         
         <AnimatedSection animation="fade-up" delay={300}>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-4 font-medium text-[#d70e0e] px-2 leading-relaxed">
-            Во‑первых <strong>НЕ ПЛАТИТЕ!</strong> Не паникуйте! Скорее всего её в 99% можно оспорить.
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 font-bold text-red-600 px-2 leading-relaxed">
+            <strong>НЕ ПЛАТИТЕ!</strong> Не паникуйте!
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-trust-700 mb-4 px-2 font-medium">
+            В 99% случаев претензии можно успешно оспорить
           </p>
         </AnimatedSection>
         
         <AnimatedSection animation="fade-up" delay={400}>
           <p className="text-sm sm:text-base md:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2 leading-relaxed">
-            Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
-            9 из 10 таких писем&nbsp;— это шантаж, ошибка или раздутая сумма.
+            Помогаю бизнесу, блогерам и маркетологам защищаться от необоснованных претензий по авторским правам.
+            <br className="hidden sm:block"/>
+            <span className="font-medium text-trust-700">9 из 10 таких писем — это попытка шантажа или ошибка с завышенной суммой.</span>
           </p>
         </AnimatedSection>
         
         {/* Animated Stats */}
         <AnimatedSection animation="scale-in" delay={500}>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 max-w-4xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
+          <div className="bg-white border-2 border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.savedMoney.toLocaleString('ru-RU')} ₽
             </div>
@@ -100,7 +95,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <div className="text-sm text-trust-500 mt-1">за все время работы</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
+          <div className="bg-white border-2 border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.closedCases}+
             </div>
@@ -108,7 +103,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <div className="text-sm text-trust-500 mt-1">успешно завершены</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
+          <div className="bg-white border-2 border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-smooth hover-lift">
             <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.avgSavings.toLocaleString('ru-RU')} ₽
             </div>
@@ -120,13 +115,13 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
         
         <AnimatedSection animation="fade-up" delay={600}>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2 max-w-2xl mx-auto">
-          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto min-h-[56px] font-medium tracking-wide transition-bounce hover-scale animate-pulse-glow" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
+          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-white text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 w-full sm:w-auto min-h-[56px] font-semibold tracking-wide transition-smooth shadow-lg hover:shadow-xl" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
             <Icon name="FileCheck" className="mr-2 flex-shrink-0" size={18} />
-            <span className="whitespace-nowrap">Анализ претензии&nbsp;— 5000&nbsp;₽</span>
+            <span className="whitespace-nowrap">Анализ претензии — 5000 ₽</span>
           </Button>
-          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-professional-300 hover:bg-professional-50 w-full sm:w-auto min-h-[56px] font-medium tracking-wide transition-bounce hover-scale" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
+          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-2 border-professional-600 text-professional-700 hover:bg-professional-600 hover:text-white w-full sm:w-auto min-h-[56px] font-semibold tracking-wide transition-smooth" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
             <Icon name="Phone" className="mr-2 flex-shrink-0" size={18} />
-            <span className="whitespace-nowrap">Экспресс‑консультация&nbsp;— 3000&nbsp;₽</span>
+            <span className="whitespace-nowrap">Экспресс‑консультация — 3000 ₽</span>
           </Button>
           </div>
         </AnimatedSection>

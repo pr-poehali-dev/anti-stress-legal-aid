@@ -2,23 +2,15 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="relative py-12 md:py-20 bg-slate-50/50 overflow-hidden">
-      {/* Фоновое изображение для FAQ */}
-      <div className="absolute right-0 top-0 w-1/2 h-full z-0">
-        <img 
-          src="/img/5698e954-1a58-4645-ace4-c4c3d117dbea.jpg"
-          alt="Часто задаваемые вопросы и ответы"
-          className="w-full h-full object-cover opacity-5"
-        />
-      </div>
+    <section id="faq" className="relative py-12 md:py-20 bg-slate-50/50">
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4 px-2">
-            Частые вопросы
+            Ответы на важные вопросы
           </h2>
           <p className="text-base sm:text-lg text-trust-600 px-2">
-            Отвечаю на самые популярные вопросы о защите от претензий
+            Самая важная информация о защите от претензий по авторским правам
           </p>
         </div>
 

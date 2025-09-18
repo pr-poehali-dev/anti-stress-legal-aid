@@ -9,23 +9,15 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
   return (
-    <section id="services" className="relative py-12 md:py-20 bg-white/50 overflow-hidden">
-      {/* Фоновое изображение для услуг */}
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full z-0">
-        <img 
-          src="/img/62ca6091-9ecc-4110-a055-0f51b3d3149d.jpg"
-          alt="Юридическая консультация"
-          className="w-full h-full object-cover opacity-5"
-        />
-      </div>
+    <section id="services" className="relative py-12 md:py-20 bg-white">
       
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection animation="fade-up" className="text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4 px-2">
-            3 шага — и претензия больше не ваша проблема
+            Как защитить себя от претензий
           </h2>
           <p className="text-base sm:text-lg text-trust-600 max-w-2xl mx-auto px-2">
-            Четкий алгоритм без сюрпризов и скрытых платежей
+            Прозрачный алгоритм работы. Никаких скрытых платежей и неожиданностей
           </p>
         </AnimatedSection>
         
@@ -42,15 +34,15 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
               <ul className="space-y-3 text-trust-700">
                 <li className="flex items-start gap-2">
                   <Icon name="Check" className="text-professional-600 mt-1 flex-shrink-0" size={16} />
-                  <span>Проверка оснований претензии</span>
+                  <span>Детальный анализ обоснованности претензии</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Icon name="Check" className="text-professional-600 mt-1 flex-shrink-0" size={16} />
-                  <span>Оценка реальных рисков</span>
+                  <span>Оценка реальных рисков и перспектив дела</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Icon name="Check" className="text-professional-600 mt-1 flex-shrink-0" size={16} />
-                  <span>Письменное заключение + звонок</span>
+                  <span>Письменное заключение + консультация по телефону</span>
                 </li>
               </ul>
               <div className="mt-6 p-4 bg-professional-50 rounded-lg">
