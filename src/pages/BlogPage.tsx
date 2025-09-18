@@ -338,12 +338,40 @@ export default function BlogPage() {
                 className="text-trust-700 leading-relaxed"
                 dangerouslySetInnerHTML={{ 
                   __html: selectedPost.content
-                    .replace(/\n/g, '<br>')
-                    .replace(/# (.*?)<br>/g, '<h2 class="text-xl md:text-2xl font-montserrat font-bold text-trust-900 mt-8 mb-4">$1</h2>')
-                    .replace(/## (.*?)<br>/g, '<h3 class="text-lg md:text-xl font-montserrat font-semibold text-trust-800 mt-6 mb-3">$1</h3>')
-                    .replace(/### (.*?)<br>/g, '<h4 class="text-base md:text-lg font-montserrat font-medium text-trust-700 mt-4 mb-2">$1</h4>')
-                    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-trust-900">$1</strong>')
-                    .replace(/- (.*?)<br>/g, '<li class="ml-4 mb-2">• $1</li>')
+                    .split('\n')
+                    .map(line => {
+                      line = line.trim();
+                      if (!line) return '<br>';
+                      
+                      // Заголовки
+                      if (line.startsWith('# ')) {
+                        return `<h2 class="text-xl md:text-2xl font-montserrat font-bold text-trust-900 mt-8 mb-4">${line.slice(2)}</h2>`;
+                      }
+                      if (line.startsWith('## ')) {
+                        return `<h3 class="text-lg md:text-xl font-montserrat font-semibold text-trust-800 mt-6 mb-3">${line.slice(3)}</h3>`;
+                      }
+                      if (line.startsWith('### ')) {
+                        return `<h4 class="text-base md:text-lg font-montserrat font-medium text-trust-700 mt-4 mb-2">${line.slice(4)}</h4>`;
+                      }
+                      
+                      // Списки
+                      if (line.startsWith('- ')) {
+                        return `<div class="ml-4 mb-2">• ${line.slice(2).replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-trust-900">$1</strong>')}</div>`;
+                      }
+                      
+                      // Код блоки
+                      if (line.startsWith('```')) {
+                        return line === '```' ? '' : `<div class="bg-slate-100 p-4 rounded-lg font-mono text-sm mt-4 mb-4">`;
+                      }
+                      
+                      // Обычный текст
+                      return `<p class="mb-4">${line.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-trust-900">$1</strong>')}</p>`;
+                    })
+                    .join('')
+                    .replace(/<div class="bg-slate-100 p-4 rounded-lg font-mono text-sm mt-4 mb-4">([\s\S]*?)<\/div>/g, (match, content) => {
+                      const lines = content.split('<p class="mb-4">').filter(Boolean);
+                      return `<div class="bg-slate-100 p-4 rounded-lg font-mono text-sm mt-4 mb-4">${lines.map(l => l.replace('</p>', '')).join('<br>')}</div>`;
+                    })
                 }}
               />
             </div>
