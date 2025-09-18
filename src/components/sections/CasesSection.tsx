@@ -4,7 +4,7 @@ import Icon from '@/components/ui/icon';
 
 export default function CasesSection() {
   return (
-    <section id="cases" className="relative py-20 overflow-hidden">
+    <section id="cases" className="relative py-12 md:py-20 overflow-hidden">
       {/* Фоновое изображение для кейсов */}
       <div className="absolute left-0 top-0 w-full h-full z-0">
         <img 
@@ -16,23 +16,23 @@ export default function CasesSection() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4 px-2">
             Реальные кейсы — реальная экономия
           </h2>
-          <p className="text-lg text-trust-600">
+          <p className="text-base sm:text-lg text-trust-600 px-2">
             Более 200 успешно закрытых дел с 2020 года
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200 mx-2 sm:mx-0">
             <CardHeader>
               <div className="flex items-center justify-between mb-4">
                 <Badge className="bg-green-100 text-green-700">Дело закрыто</Badge>
                 <Icon name="TrendingDown" className="text-green-600" size={20} />
               </div>
-              <CardTitle className="text-xl text-trust-900">Фото с Pinterest</CardTitle>
+              <CardTitle className="text-lg sm:text-xl text-trust-900">Фото с Pinterest</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -57,7 +57,7 @@ export default function CasesSection() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200">
+          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200 mx-2 sm:mx-0">
             <CardHeader>
               <div className="flex items-center justify-between mb-4">
                 <Badge className="bg-green-100 text-green-700">Претензия отозвана</Badge>
@@ -88,7 +88,7 @@ export default function CasesSection() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200">
+          <Card className="bg-gradient-to-br from-professional-50 to-white border-professional-200 mx-2 sm:mx-0">
             <CardHeader>
               <div className="flex items-center justify-between mb-4">
                 <Badge className="bg-green-100 text-green-700">Претензия снята</Badge>

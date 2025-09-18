@@ -8,7 +8,7 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
   return (
-    <section id="services" className="relative py-20 bg-white/50 overflow-hidden">
+    <section id="services" className="relative py-12 md:py-20 bg-white/50 overflow-hidden">
       {/* Фоновое изображение для услуг */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full z-0">
         <img 
@@ -19,16 +19,16 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-bold text-trust-900 mb-4 px-2">
             3 шага — и претензия больше не ваша проблема
           </h2>
-          <p className="text-lg text-trust-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-trust-600 max-w-2xl mx-auto px-2">
             Четкий алгоритм без сюрпризов и скрытых платежей
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           <Card className="border-2 border-professional-100 hover:border-professional-200 transition-all duration-300 hover:shadow-lg">
             <CardHeader className="text-center">
               <div className="w-16 h-16 bg-professional-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -37,7 +37,7 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
               <CardTitle className="text-xl text-trust-900">Анализ за 5000 ₽</CardTitle>
               <CardDescription>24-48 часов</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-4 sm:px-6">
               <ul className="space-y-3 text-trust-700">
                 <li className="flex items-start gap-2">
                   <Icon name="Check" className="text-professional-600 mt-1 flex-shrink-0" size={16} />
@@ -58,8 +58,8 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
                 </p>
               </div>
               
-              <div className="mt-6">
-                <Button className="w-full bg-professional-600 hover:bg-professional-700 text-white font-medium" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
+              <div className="mt-4 md:mt-6">
+                <Button className="w-full bg-professional-600 hover:bg-professional-700 text-white font-medium text-sm sm:text-base py-3" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
                   <Icon name="FileCheck" className="mr-2" size={16} />
                   Заказать анализ — 5000 ₽
                 </Button>
@@ -75,7 +75,7 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
               <CardTitle className="text-xl text-trust-900">Досудебное решение</CardTitle>
               <CardDescription>Без суда</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-4 sm:px-6">
               <div className="space-y-4">
                 <div className="relative overflow-hidden bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-xl p-4 hover:shadow-md transition-all duration-300">
                   <div className="flex justify-between items-center">
@@ -136,11 +136,11 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
               </div>
               
               <div className="mt-6 space-y-3">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium" onClick={() => onModalOpen('pretrial', 'Досудебное решение')}>
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium text-sm sm:text-base py-3" onClick={() => onModalOpen('pretrial', 'Досудебное решение')}>
                   <Icon name="MessageSquare" className="mr-2" size={16} />
                   Досудебное решение
                 </Button>
-                <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50" onClick={() => onModalOpen('pretrial', 'Узнать стоимость досудебного решения')}>
+                <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50 text-sm sm:text-base py-3" onClick={() => onModalOpen('pretrial', 'Узнать стоимость досудебного решения')}>
                   <Icon name="Phone" className="mr-2" size={16} />
                   Узнать стоимость
                 </Button>
@@ -156,7 +156,7 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
               <CardTitle className="text-xl text-trust-900">Судебная защита</CardTitle>
               <CardDescription>Полное сопровождение</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-4 sm:px-6">
               <div className="text-center">
                 <div className="text-3xl font-montserrat font-bold text-professional-600 mb-2">
                   От 50 000 ₽
@@ -188,11 +188,11 @@ export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
                 </div>
                 
                 <div className="mt-6 space-y-3">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium" onClick={() => onModalOpen('court', 'Судебная защита')}>
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm sm:text-base py-3" onClick={() => onModalOpen('court', 'Судебная защита')}>
                     <Icon name="Gavel" className="mr-2" size={16} />
                     Судебная защита
                   </Button>
-                  <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50" onClick={() => onModalOpen('court', 'Рассчитать стоимость судебной защиты')}>
+                  <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50 text-sm sm:text-base py-3" onClick={() => onModalOpen('court', 'Рассчитать стоимость судебной защиты')}>
                     <Icon name="Calculator" className="mr-2" size={16} />
                     Рассчитать стоимость
                   </Button>

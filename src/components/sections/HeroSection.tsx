@@ -51,7 +51,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className="relative py-20 px-4 overflow-hidden">
+    <section className="relative py-12 md:py-20 px-4 overflow-hidden">
       {/* Фоновое изображение */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -66,47 +66,49 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
         <Badge className="mb-6 bg-professional-100 text-professional-700 border-professional-200">
           Не паникуйте — есть решение
         </Badge>
-        <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight">
           Получили претензию по авторским правам?
         </h1>
-        <p className="text-xl md:text-2xl mb-4 font-medium text-[#d70e0e]">Во первых !!!Не платите!!! Не паникуйте!!! Скорее всего её в 99% можно оспорить.</p>
-        <p className="text-lg text-trust-600 mb-10 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl md:text-2xl mb-4 font-medium text-[#d70e0e] px-2">
+          Во первых !!!Не платите!!! Не паникуйте!!! Скорее всего её в 99% можно оспорить.
+        </p>
+        <p className="text-base sm:text-lg text-trust-600 mb-8 md:mb-10 max-w-3xl mx-auto px-2">
           Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
           9 из 10 таких писем — это шантаж, ошибка или раздутая сумма.
         </p>
         
         {/* Animated Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="text-3xl md:text-4xl font-montserrat font-bold text-professional-600 mb-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 max-w-4xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.savedMoney.toLocaleString('ru-RU')} ₽
             </div>
             <div className="text-trust-600 font-medium">Сэкономлено клиентам</div>
             <div className="text-sm text-trust-500 mt-1">за все время работы</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="text-3xl md:text-4xl font-montserrat font-bold text-professional-600 mb-2">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.closedCases}+
             </div>
             <div className="text-trust-600 font-medium">Закрытых дел</div>
             <div className="text-sm text-trust-500 mt-1">успешно завершены</div>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="text-3xl md:text-4xl font-montserrat font-bold text-professional-600 mb-2">
+          <div className="bg-white/80 backdrop-blur-sm border border-professional-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold text-professional-600 mb-2">
               {counters.avgSavings.toLocaleString('ru-RU')} ₽
             </div>
             <div className="text-trust-600 font-medium">Средняя экономия</div>
             <div className="text-sm text-trust-500 mt-1">на одно дело</div>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-lg px-8 py-6" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2">
+          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-base md:text-lg px-4 md:px-8 py-4 md:py-6 w-full sm:w-auto" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
             <Icon name="FileCheck" className="mr-2" size={20} />
             Анализ претензии — 5000 ₽
           </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-professional-300" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
+          <Button variant="outline" size="lg" className="text-base md:text-lg px-4 md:px-8 py-4 md:py-6 border-professional-300 w-full sm:w-auto" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
             <Icon name="Phone" className="mr-2" size={20} />
             Экспресс-консультация — 3000 ₽
           </Button>

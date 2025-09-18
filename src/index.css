@@ -99,6 +99,10 @@
 
   body {
     @apply bg-background text-foreground font-open-sans;
+    /* Мобильная оптимизация */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
   }
 
   h1,
@@ -108,5 +112,34 @@
   h5,
   h6 {
     @apply font-montserrat;
+  }
+
+  /* Улучшение скролла на мобильных */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Оптимизация для мобильных */
+  @media (max-width: 768px) {
+    /* Плавный скролл */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Улучшение кликабельности кнопок */
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+    }
+
+    /* Предотвращение зума при фокусе на инпутах */
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
   }
 }
