@@ -59,9 +59,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
         <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight">
           Получили претензию об авторских правах?
         </h1>
-        <p className="text-xl md:text-2xl text-professional-600 mb-4 font-medium">
-          Не платите. Не паникуйте. Скорее всего — её можно оспорить.
-        </p>
+        <p className="text-xl md:text-2xl text-professional-600 mb-4 font-medium">Во первых !!!Не платите!!! Не паникуйте. Скорее всего — её можно оспорить.</p>
         <p className="text-lg text-trust-600 mb-10 max-w-3xl mx-auto">
           Я помогаю бизнесу, блогерам и маркетологам отбиваться от необоснованных претензий по авторским правам.
           9 из 10 таких писем — это шантаж, ошибка или раздутая сумма.
