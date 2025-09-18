@@ -57,7 +57,7 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
           Не паникуйте — есть решение
         </Badge>
         <h1 className="text-4xl md:text-6xl font-montserrat font-bold text-trust-900 mb-6 leading-tight">
-          Получили претензию об авторских правах?
+          Получили претензию по авторским правам?
         </h1>
         <p className="text-xl md:text-2xl mb-4 font-medium text-[#d70e0e]">Во первых !!!Не платите!!! Не паникуйте!!! Скорее всего её в 99% можно оспорить.</p>
         <p className="text-lg text-trust-600 mb-10 max-w-3xl mx-auto">
