@@ -22,9 +22,70 @@ export default function FormSection() {
     file: null
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Анализ претензии отправлен:', formData);
+    setIsSubmitting(true);
+    
+    try {
+      // Проверяем обязательные поля
+      if (!formData.name.trim() || !formData.contact.trim() || !formData.file) {
+        toast.error('⚠️ Заполните все обязательные поля');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Отправляем данные в Telegram (без файла, просто описание)
+      const response = await fetch('https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          contact: formData.contact,
+          service: 'Авторские права',
+          urgency: 'Анализ претензии',
+          message: `Запрос на анализ претензии:\n\nОписание: ${formData.description || 'Не указано'}\nФайл: ${formData.file?.name || 'Загружен'}\n\nСтоимость: 5000 ₽`,
+          timestamp: new Date().toLocaleString('ru-RU')
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Сброс формы
+        setFormData({
+          name: '',
+          contact: '',
+          description: '',
+          file: null
+        });
+        
+        // Сброс input file
+        const fileInput = document.getElementById('file') as HTMLInputElement;
+        if (fileInput) fileInput.value = '';
+        
+        toast.success('🎉 Заявка на анализ отправлена! Свяжемся с вами в течение часа для уточнения деталей.');
+      } else {
+        throw new Error(result.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки:', error);
+      
+      if (error instanceof Error) {
+        if (error.message.includes('секреты') || error.message.includes('TOKEN')) {
+          toast.error('⚙️ Настройки уведомлений еще не готовы. Свяжитесь с нами напрямую.');
+        } else {
+          toast.error('❌ Произошла ошибка. Попробуйте еще раз или свяжитесь с нами напрямую.');
+        }
+      } else {
+        toast.error('❌ Произошла ошибка. Попробуйте еще раз.');
+      }
+    }
+    
+    setIsSubmitting(false);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -162,10 +223,20 @@ export default function FormSection() {
                   <Button 
                     type="submit" 
                     size="lg" 
+                    disabled={isSubmitting}
                     className="w-full bg-professional-600 hover:bg-professional-700 text-lg py-6"
                   >
-                    <Icon name="Send" className="mr-2" size={20} />
-                    Отправить претензию на анализ — 5000 ₽
+                    {isSubmitting ? (
+                      <>
+                        <Icon name="Loader2" className="mr-2 animate-spin" size={20} />
+                        Отправляем...
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="Send" className="mr-2" size={20} />
+                        Отправить претензию на анализ — 5000 ₽
+                      </>
+                    )}
                   </Button>
                   
                   <Button 
