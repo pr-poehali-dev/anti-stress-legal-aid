@@ -21,6 +21,36 @@
     </image:image>
   </url>
 
+  <!-- Страница блога -->
+  <url>
+    <loc>https://yourdomain.com/blog</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Статьи блога -->
+  <url>
+    <loc>https://yourdomain.com/blog/pretenziya-avtorskie-prava-instrukciya</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/blog/avtorskie-prava-fotografii-biznes</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/blog/kompensaciya-avtorskie-prava-razmer</loc>
+    <lastmod>2024-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Дополнительные страницы (если будут добавлены) -->
   
 </urlset>

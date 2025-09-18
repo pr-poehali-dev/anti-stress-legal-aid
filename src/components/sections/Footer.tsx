@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 
 interface FooterProps {
@@ -31,9 +32,19 @@ export default function Footer({ onContactClick }: FooterProps) {
             </Button>
           </div>
           <div className="mt-8 pt-8 border-t border-trust-700">
-            <p className="text-trust-400 text-sm">
-              P.S. Если вы читаете это — вы уже на полпути к решению. Осталось сделать один шаг.
-            </p>
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="flex space-x-6">
+                <Link to="/" className="text-trust-400 hover:text-professional-400 transition-colors text-sm">
+                  Главная
+                </Link>
+                <Link to="/blog" className="text-trust-400 hover:text-professional-400 transition-colors text-sm">
+                  Блог
+                </Link>
+              </div>
+              <p className="text-trust-400 text-sm text-center">
+                P.S. Если вы читаете это — вы уже на полпути к решению. Осталось сделать один шаг.
+              </p>
+            </div>
           </div>
         </div>
       </div>
