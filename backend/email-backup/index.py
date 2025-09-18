@@ -67,15 +67,28 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         urgency = body_data.get('urgency', 'Неделя')
         message_text = body_data.get('message', '').strip()
         request_id = getattr(context, 'request_id', 'unknown')
+        email_type = body_data.get('email_type', 'fallback')
         
-        subject = f"[РЕЗЕРВ] Новый заказ от {name} - {service}"
+        # Different subject and styling based on email type
+        if email_type == 'backup':
+            subject = f"[ДУБЛЬ] Новый заказ от {name} - {service}"
+            status_text = "✅ Telegram доставлен (это дубль для надёжности)"
+            gradient_color = "linear-gradient(135deg, #10b981 0%, #059669 100%)"
+            icon = "📋"
+            header_title = "ДУБЛИРУЮЩЕЕ УВЕДОМЛЕНИЕ"
+        else:  # fallback
+            subject = f"[РЕЗЕРВ] Новый заказ от {name} - {service}"
+            status_text = "❌ Telegram недоступен (используется email резерв)"
+            gradient_color = "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
+            icon = "⚡"
+            header_title = "РЕЗЕРВНОЕ УВЕДОМЛЕНИЕ"
         
         html_body = f"""
         <html>
         <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; text-align: center;">
-                <h1 style="color: white; margin: 0;">⚡ РЕЗЕРВНОЕ УВЕДОМЛЕНИЕ</h1>
-                <p style="color: #f0f0f0; margin: 5px 0;">Telegram недоступен - отправлено по email</p>
+            <div style="background: {gradient_color}; padding: 20px; text-align: center;">
+                <h1 style="color: white; margin: 0;">{icon} {header_title}</h1>
+                <p style="color: #f0f0f0; margin: 5px 0;">{status_text}</p>
             </div>
             
             <div style="padding: 20px; background: #f9f9f9;">
@@ -111,7 +124,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     <p style="margin: 0; color: #555;">
                         <strong>🆔 ID заявки:</strong> {request_id}<br>
                         <strong>📅 Время:</strong> {body_data.get('timestamp', 'не указано')}<br>
-                        <strong>🔄 Статус Telegram:</strong> ❌ Недоступен (используется email резерв)
+                        <strong>🔄 Статус доставки:</strong> {status_text}
                     </p>
                 </div>
             </div>
@@ -140,14 +153,14 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             # Log success
             try:
                 requests.post(
-                    'https://functions.poehali.dev/notification-logs',
+                    'https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9',
                     json={
-                        'channel': 'email_backup',
+                        'channel': f'email_{email_type}',
                         'status': 'success',
                         'recipient': recipient_email,
                         'subject': subject,
-                        'message': f'Резервное уведомление для заказа от {name}',
-                        'metadata': {'service': service, 'urgency': urgency, 'request_id': request_id}
+                        'message': f'{header_title} для заказа от {name}',
+                        'metadata': {'service': service, 'urgency': urgency, 'request_id': request_id, 'email_type': email_type}
                     },
                     timeout=5
                 )
@@ -162,8 +175,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 },
                 'body': json.dumps({
                     'success': True,
-                    'message': 'Резервное уведомление отправлено по email',
+                    'message': f'{header_title} отправлено по email',
                     'recipient': recipient_email,
+                    'email_type': email_type,
                     'request_id': request_id
                 })
             }
@@ -172,15 +186,15 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             # Log failure
             try:
                 requests.post(
-                    'https://functions.poehali.dev/notification-logs',
+                    'https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9',
                     json={
-                        'channel': 'email_backup',
+                        'channel': f'email_{email_type}',
                         'status': 'failed',
                         'recipient': recipient_email,
                         'subject': subject,
-                        'message': f'Резервное уведомление для заказа от {name}',
+                        'message': f'{header_title} для заказа от {name}',
                         'error_message': str(e),
-                        'metadata': {'service': service, 'urgency': urgency}
+                        'metadata': {'service': service, 'urgency': urgency, 'email_type': email_type}
                     },
                     timeout=5
                 )

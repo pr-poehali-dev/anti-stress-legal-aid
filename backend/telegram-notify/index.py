@@ -21,12 +21,37 @@ def log_notification(channel: str, status: str, recipient: str, subject: str, me
         
         # Try to send to log function (don't fail main function if logging fails)
         requests.post(
-            'https://functions.poehali.dev/notification-logs',
+            'https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9',
             json=log_data,
             timeout=5
         )
     except:
         pass  # Logging failure shouldn't break main functionality
+
+def send_backup_email(body_data: dict, context, email_type: str = 'backup') -> bool:
+    """Send backup email notification"""
+    try:
+        # Add email type to body for proper handling
+        email_data = body_data.copy()
+        email_data['email_type'] = email_type
+        email_data['timestamp'] = email_data.get('timestamp', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        
+        response = requests.post(
+            'https://functions.poehali.dev/d9ad4234-e20a-4f33-a228-7ae29e45b0b4',
+            json=email_data,
+            timeout=15
+        )
+        
+        if response.status_code == 200:
+            result = response.json()
+            return result.get('success', False)
+        else:
+            print(f"Email backup failed: {response.status_code}")
+            return False
+            
+    except Exception as e:
+        print(f"Email backup error: {str(e)}")
+        return False
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
@@ -173,16 +198,35 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 # Success logging
                 log_notification('telegram', 'success', chat_id, f'Заказ от {name}', telegram_message, 
                                None, {'service': service, 'urgency': urgency})
+                
+                # ALWAYS send backup email after successful Telegram
+                send_backup_email(body_data, context, 'backup')
     
     except Exception as e:
         print(f"ERROR: Exception in Telegram send: {str(e)}")
         log_notification('telegram', 'error', chat_id, f'Заказ от {name}', telegram_message, 
                        str(e), {'service': service, 'urgency': urgency})
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': f'Ошибка отправки в Telegram: {str(e)}'})
-        }
+        
+        # Send backup email when Telegram fails
+        email_result = send_backup_email(body_data, context, 'fallback')
+        
+        if email_result:
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({
+                    'success': True,
+                    'message': 'Telegram недоступен, заявка отправлена по email',
+                    'fallback': True,
+                    'request_id': getattr(context, 'request_id', 'unknown')
+                })
+            }
+        else:
+            return {
+                'statusCode': 500,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'error': f'Ошибка отправки в Telegram и email: {str(e)}'})
+            }
     
     return {
         'statusCode': 200,
