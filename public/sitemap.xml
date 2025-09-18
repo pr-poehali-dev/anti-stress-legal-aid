@@ -35,6 +35,12 @@
     <lastmod>2024-12-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    
+    <image:image>
+      <image:loc>https://yourdomain.com/img/102596f0-6f15-4541-a71b-4d61c9611872.jpg</image:loc>
+      <image:title>Получили претензию по авторским правам? Пошаговая инструкция</image:title>
+      <image:caption>Юридическая консультация по претензиям авторских прав</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -42,6 +48,12 @@
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    
+    <image:image>
+      <image:loc>https://yourdomain.com/img/21d3faee-9dfc-4d04-b384-473fafdda2c1.jpg</image:loc>
+      <image:title>Авторские права на фотографии для бизнеса</image:title>
+      <image:caption>Защита бизнеса от нарушений авторских прав на фотографии</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -49,6 +61,12 @@
     <lastmod>2024-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    
+    <image:image>
+      <image:loc>https://yourdomain.com/img/413072e0-2699-44ab-a1e0-9f35e18a06ce.jpg</image:loc>
+      <image:title>Размер компенсации за нарушение авторских прав</image:title>
+      <image:caption>Расчет компенсации и способы снижения выплат</image:caption>
+    </image:image>
   </url>
 
   <!-- Дополнительные страницы (если будут добавлены) -->

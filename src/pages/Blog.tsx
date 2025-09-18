@@ -119,8 +119,22 @@ export default function Blog() {
                 {sortedPosts.map(post => (
                   <article 
                     key={post.id}
-                    className="bg-white rounded-xl border border-trust-200 shadow-sm hover:shadow-lg transition-all duration-300 group"
+                    className="bg-white rounded-xl border border-trust-200 shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden"
                   >
+                    {/* Изображение статьи */}
+                    {post.image && (
+                      <div className="aspect-video overflow-hidden">
+                        <Link to={`/blog/${post.slug}`}>
+                          <img 
+                            src={post.image} 
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                          />
+                        </Link>
+                      </div>
+                    )}
+                    
                     <div className="p-6">
                       {/* Метаинформация */}
                       <div className="flex items-center justify-between text-sm text-trust-500 mb-4">

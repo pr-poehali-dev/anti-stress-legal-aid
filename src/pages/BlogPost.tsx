@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
+import CommentSystem from '@/components/CommentSystem';
 import { useState, useEffect } from 'react';
 
 export default function BlogPost() {
@@ -97,6 +98,20 @@ export default function BlogPost() {
               <span className="text-trust-700">{post.title}</span>
             </div>
           </nav>
+
+          {/* Изображение статьи */}
+          {post.image && (
+            <div className="max-w-5xl mx-auto mb-12">
+              <div className="aspect-video overflow-hidden rounded-2xl shadow-lg">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Заголовок статьи */}
           <header className="max-w-4xl mx-auto mb-12 text-center">
@@ -225,6 +240,9 @@ export default function BlogPost() {
               </div>
             </section>
           )}
+
+          {/* Система комментариев */}
+          <CommentSystem postSlug={post.slug} postTitle={post.title} />
         </div>
       </main>
 
