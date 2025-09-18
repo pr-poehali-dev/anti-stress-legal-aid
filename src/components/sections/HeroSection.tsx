@@ -9,7 +9,11 @@ interface CountersState {
   avgSavings: number;
 }
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onModalOpen: (service: string, title: string) => void;
+}
+
+export default function HeroSection({ onModalOpen }: HeroSectionProps) {
   const [counters, setCounters] = useState<CountersState>({
     savedMoney: 0,
     closedCases: 0,
@@ -90,11 +94,11 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-lg px-8 py-6">
+          <Button size="lg" className="bg-professional-600 hover:bg-professional-700 text-lg px-8 py-6" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
             <Icon name="FileCheck" className="mr-2" size={20} />
             Анализ претензии — 5000 ₽
           </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-professional-300">
+          <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-professional-300" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
             <Icon name="Phone" className="mr-2" size={20} />
             Экспресс-консультация — 3000 ₽
           </Button>

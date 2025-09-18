@@ -2,7 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  onModalOpen: (service: string, title: string) => void;
+}
+
+export default function ServicesSection({ onModalOpen }: ServicesSectionProps) {
   return (
     <section id="services" className="py-20 bg-white/50">
       <div className="container mx-auto px-4">
@@ -46,7 +50,7 @@ export default function ServicesSection() {
               </div>
               
               <div className="mt-6">
-                <Button className="w-full bg-professional-600 hover:bg-professional-700 text-white font-medium">
+                <Button className="w-full bg-professional-600 hover:bg-professional-700 text-white font-medium" onClick={() => onModalOpen('analysis', 'Заказать анализ претензии')}>
                   <Icon name="FileCheck" className="mr-2" size={16} />
                   Заказать анализ — 5000 ₽
                 </Button>
@@ -123,11 +127,11 @@ export default function ServicesSection() {
               </div>
               
               <div className="mt-6 space-y-3">
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium">
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium" onClick={() => onModalOpen('pretrial', 'Досудебное решение')}>
                   <Icon name="MessageSquare" className="mr-2" size={16} />
                   Досудебное решение
                 </Button>
-                <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50">
+                <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50" onClick={() => onModalOpen('pretrial', 'Узнать стоимость досудебного решения')}>
                   <Icon name="Phone" className="mr-2" size={16} />
                   Узнать стоимость
                 </Button>
@@ -175,11 +179,11 @@ export default function ServicesSection() {
                 </div>
                 
                 <div className="mt-6 space-y-3">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium" onClick={() => onModalOpen('court', 'Судебная защита')}>
                     <Icon name="Gavel" className="mr-2" size={16} />
                     Судебная защита
                   </Button>
-                  <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50">
+                  <Button variant="outline" className="w-full border-professional-300 text-professional-600 hover:bg-professional-50" onClick={() => onModalOpen('court', 'Рассчитать стоимость судебной защиты')}>
                     <Icon name="Calculator" className="mr-2" size={16} />
                     Рассчитать стоимость
                   </Button>

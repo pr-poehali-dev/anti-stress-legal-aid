@@ -1,7 +1,11 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
-export default function Footer() {
+interface FooterProps {
+  onContactClick: () => void;
+}
+
+export default function Footer({ onContactClick }: FooterProps) {
   return (
     <footer className="bg-trust-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -14,11 +18,11 @@ export default function Footer() {
             Не знаете, с чего начать? Напишите мне в Telegram — отвечу за 1 час.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white">
+            <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white" onClick={onContactClick}>
               <Icon name="Send" className="mr-2" size={20} />
               Telegram
             </Button>
-            <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white">
+            <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white" onClick={onContactClick}>
               <Icon name="Phone" className="mr-2" size={20} />
               +7 (XXX) XXX-XX-XX
             </Button>
