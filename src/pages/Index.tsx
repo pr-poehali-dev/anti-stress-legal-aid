@@ -184,7 +184,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-professional-100 hover:border-professional-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="border-2 border-professional-100 hover:border-professional-200 transition-all duration-300 hover:shadow-lg bg-gradient-to-br from-professional-50/30 to-white">
               <CardHeader className="text-center">
                 <div className="w-16 h-16 bg-professional-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon name="MessageSquare" className="text-professional-600" size={24} />
@@ -194,18 +194,62 @@ export default function Index() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-trust-50 rounded-lg">
-                    <span className="text-trust-700">До 100 000 ₽</span>
-                    <Badge variant="secondary">15 000 ₽</Badge>
+                  <div className="relative overflow-hidden bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <div className="text-sm text-green-600 font-medium mb-1">Претензии до</div>
+                        <div className="text-lg font-semibold text-green-700">100 000 ₽</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-montserrat font-bold text-professional-600">15 000</div>
+                        <div className="text-sm text-professional-700 font-medium">₽</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-2 right-2">
+                      <Icon name="TrendingDown" className="text-green-500" size={20} />
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-trust-50 rounded-lg">
-                    <span className="text-trust-700">100-300 тыс. ₽</span>
-                    <Badge variant="secondary">25 000 ₽</Badge>
+                  
+                  <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <div className="text-sm text-blue-600 font-medium mb-1">Претензии</div>
+                        <div className="text-lg font-semibold text-blue-700">100-300 тыс. ₽</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-montserrat font-bold text-professional-600">25 000</div>
+                        <div className="text-sm text-professional-700 font-medium">₽</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-2 right-2">
+                      <Icon name="Shield" className="text-blue-500" size={20} />
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-trust-50 rounded-lg">
-                    <span className="text-trust-700">Свыше 300 тыс. ₽</span>
-                    <Badge variant="secondary">Индивидуально</Badge>
+                  
+                  <div className="relative overflow-hidden bg-gradient-to-r from-professional-50 to-professional-100 border border-professional-200 rounded-xl p-4 hover:shadow-md transition-all duration-300">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <div className="text-sm text-professional-600 font-medium mb-1">Свыше</div>
+                        <div className="text-lg font-semibold text-professional-700">300 тыс. ₽</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-montserrat font-bold text-professional-600">Индивидуально</div>
+                      </div>
+                    </div>
+                    <div className="absolute top-2 right-2">
+                      <Icon name="Star" className="text-professional-500" size={20} />
+                    </div>
                   </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon name="Zap" className="text-green-600" size={16} />
+                    <span className="text-sm font-semibold text-green-700">Быстро и эффективно</span>
+                  </div>
+                  <p className="text-xs text-trust-600">
+                    90% дел закрываются без суда за 1-2 недели
+                  </p>
                 </div>
               </CardContent>
             </Card>
