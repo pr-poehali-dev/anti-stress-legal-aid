@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { toast } from 'sonner';
 
 interface FormData {
   name: string;
@@ -29,6 +30,37 @@ export default function FormSection() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setFormData(prev => ({ ...prev, file }));
+  };
+
+  const testTelegramSettings = async () => {
+    try {
+      toast.info('Проверяю настройки Telegram...');
+      
+      const response = await fetch('https://functions.poehali.dev/0d681bfa-61c4-45fc-87f0-98e65e50fc36', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        
+        if (result.details?.telegram_api_test) {
+          toast.success('✅ Telegram настроен корректно! Проверьте чат.');
+        } else {
+          toast.error(`❌ Проблема: ${result.errors?.join(', ') || 'Неизвестная ошибка'}`);
+          if (result.recommendations?.length > 0) {
+            toast.info(`Рекомендации: ${result.recommendations.join(', ')}`);
+          }
+        }
+      } else {
+        toast.error('Ошибка тестирования настроек');
+      }
+    } catch (error) {
+      toast.error('Не удалось проверить настройки');
+      console.error('Test error:', error);
+    }
   };
 
   return (
@@ -126,14 +158,27 @@ export default function FormSection() {
                   </ul>
                 </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-professional-600 hover:bg-professional-700 text-lg py-6"
-                >
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Отправить претензию на анализ — 5000 ₽
-                </Button>
+                <div className="space-y-3">
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full bg-professional-600 hover:bg-professional-700 text-lg py-6"
+                  >
+                    <Icon name="Send" className="mr-2" size={20} />
+                    Отправить претензию на анализ — 5000 ₽
+                  </Button>
+                  
+                  <Button 
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={testTelegramSettings}
+                    className="w-full text-xs text-gray-500 border-gray-300"
+                  >
+                    <Icon name="Settings" className="mr-1" size={14} />
+                    Тест настроек Telegram
+                  </Button>
+                </div>
               </form>
             </CardContent>
           </Card>
