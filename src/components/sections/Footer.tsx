@@ -10,9 +10,12 @@ export default function Footer({ onContactClick }: FooterProps) {
     <footer className="bg-trust-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="text-center">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Icon name="Scale" className="text-professional-400" size={32} />
-            <span className="text-2xl font-montserrat font-bold">ЮрЗащита</span>
+          <div className="flex items-center justify-center mb-6">
+            <img 
+              src="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" 
+              alt="ПравоПомощь 24/7" 
+              className="h-16 w-auto filter brightness-0 invert"
+            />
           </div>
           <p className="text-trust-300 mb-8 max-w-2xl mx-auto">
             Не знаете, с чего начать? Напишите мне в Telegram — отвечу за 1 час.
