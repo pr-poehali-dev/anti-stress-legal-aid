@@ -84,6 +84,21 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'body': json.dumps({'error': 'TELEGRAM_CHAT_ID не настроен'})
         }
     
+    # Дополнительная проверка форматов (частая ошибка - перепутанные секреты)
+    if ':' in chat_id or len(chat_id) > 15:
+        return {
+            'statusCode': 500,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'TELEGRAM_CHAT_ID содержит токен бота. Проверьте секреты - возможно они перепутаны местами'})
+        }
+    
+    if ':' not in bot_token or len(bot_token) < 40:
+        return {
+            'statusCode': 500,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'TELEGRAM_BOT_TOKEN должен содержать : и быть длиннее 40 символов. Проверьте секреты'})
+        }
+    
     # Формируем сообщение
     urgency = body_data.get('urgency', 'Неделя')
     message_text = body_data.get('message', '').strip()
