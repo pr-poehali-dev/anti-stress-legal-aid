@@ -3,19 +3,24 @@ Allow: /
 
 # Основные страницы
 Allow: /
-Allow: /index.html
+Allow: /blog
+Allow: /blog/*
 
 # Разрешаем поисковым роботам индексировать изображения и статические файлы
 Allow: /assets/
-Allow: *.css
-Allow: *.js
-Allow: *.png
-Allow: *.jpg
-Allow: *.jpeg
-Allow: *.gif
-Allow: *.svg
-Allow: *.webp
-Allow: *.ico
+Allow: /img/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+
+# Файлы верификации
+Allow: /yandex_*.html
 
 # Запрещаем служебные файлы
 Disallow: /src/
@@ -57,5 +62,5 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Указываем путь к карте сайта
+# Указываем путь к карте сайта (обновлено для блога)
 Sitemap: https://yourdomain.com/sitemap.xml
