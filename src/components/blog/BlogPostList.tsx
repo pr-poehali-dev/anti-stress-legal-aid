@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import AnimatedSection from '@/components/ui/animated-section';
+import BlogSearch from './BlogSearch';
 
 interface BlogPost {
   id: string;
@@ -21,6 +22,8 @@ interface BlogPostListProps {
   categories: string[];
   onCategoryChange: (category: string) => void;
   onPostSelect: (post: BlogPost) => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
 }
 
 export default function BlogPostList({ 
@@ -28,11 +31,30 @@ export default function BlogPostList({
   selectedCategory, 
   categories, 
   onCategoryChange, 
-  onPostSelect 
+  onPostSelect,
+  searchQuery = '',
+  onSearchChange
 }: BlogPostListProps) {
-  const filteredPosts = selectedCategory === 'Все' 
+  // Функция поиска по статьям
+  const searchPosts = (posts: BlogPost[], query: string) => {
+    if (!query.trim()) return posts;
+    
+    const lowerQuery = query.toLowerCase();
+    return posts.filter(post => 
+      post.title.toLowerCase().includes(lowerQuery) ||
+      post.excerpt.toLowerCase().includes(lowerQuery) ||
+      post.content.toLowerCase().includes(lowerQuery) ||
+      post.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
+      post.category.toLowerCase().includes(lowerQuery)
+    );
+  };
+
+  // Применяем фильтры: сначала по категории, потом по поиску
+  let filteredPosts = selectedCategory === 'Все' 
     ? posts 
     : posts.filter(post => post.category === selectedCategory);
+  
+  filteredPosts = searchPosts(filteredPosts, searchQuery);
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -45,6 +67,18 @@ export default function BlogPostList({
           по защите от претензий и соблюдению авторских прав
         </p>
       </AnimatedSection>
+
+      {/* Поиск */}
+      {onSearchChange && (
+        <AnimatedSection animation="fade-up" delay={150} className="mb-8">
+          <div className="max-w-2xl mx-auto">
+            <BlogSearch 
+              onSearch={onSearchChange}
+              placeholder="Поиск по статьям, тегам и содержимому..."
+            />
+          </div>
+        </AnimatedSection>
+      )}
 
       {/* Фильтр по категориям */}
       <AnimatedSection animation="fade-up" delay={200} className="mb-8">
@@ -66,9 +100,27 @@ export default function BlogPostList({
         </div>
       </AnimatedSection>
 
+      {/* Результаты поиска */}
+      {searchQuery && (
+        <AnimatedSection animation="fade-up" delay={250} className="mb-6">
+          <div className="text-center text-gray-600">
+            {filteredPosts.length > 0 ? (
+              <p>Найдено статей: <span className="font-semibold text-professional-600">{filteredPosts.length}</span></p>
+            ) : (
+              <div className="bg-gray-50 rounded-lg p-6">
+                <Icon name="Search" size={48} className="text-gray-400 mx-auto mb-3" />
+                <p className="text-lg font-medium text-gray-700 mb-2">Ничего не найдено</p>
+                <p className="text-gray-500">Попробуйте изменить поисковый запрос или выбрать другую категорию</p>
+              </div>
+            )}
+          </div>
+        </AnimatedSection>
+      )}
+
       {/* Список статей */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
-        {filteredPosts.map((post, index) => (
+      {filteredPosts.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {filteredPosts.map((post, index) => (
           <AnimatedSection
             key={post.id}
             animation="fade-up"
@@ -116,8 +168,9 @@ export default function BlogPostList({
               </CardContent>
             </Card>
           </AnimatedSection>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

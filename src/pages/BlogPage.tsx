@@ -9,6 +9,7 @@ import { blogPosts, BlogPost as BlogPostType } from '@/data/blogData';
 export default function BlogPage() {
   const [selectedPost, setSelectedPost] = useState<BlogPostType | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('Все');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const handleContactClick = () => {
     window.open('https://t.me/your_telegram', '_blank');
@@ -36,6 +37,8 @@ export default function BlogPage() {
           categories={categories}
           onCategoryChange={setSelectedCategory}
           onPostSelect={setSelectedPost}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
         />
         <BlogCTA onContactClick={handleContactClick} />
       </div>
