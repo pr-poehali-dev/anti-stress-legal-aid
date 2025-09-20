@@ -33,7 +33,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50">
       <Header onContactClick={() => openModal('consultation', 'Связаться с юристом')} />
       <HeroSection onModalOpen={openModal} />
       <ServicesSection onModalOpen={openModal} />
