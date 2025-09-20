@@ -9,7 +9,7 @@ import FormSection from '@/components/sections/FormSection';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
 import AIAgent from '@/components/AIAgent';
-import TelegramCheck from '@/components/TelegramCheck';
+
 
 export default function Index() {
   const [modalState, setModalState] = useState({
@@ -80,14 +80,6 @@ export default function Index() {
         <WhyMeSection />
         <FAQSection />
         <FormSection />
-        
-        {/* Временный компонент для проверки Telegram */}
-        <div className="py-10 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <TelegramCheck />
-          </div>
-        </div>
-        
         <Footer onContactClick={() => openModal('consultation', 'Связаться в Telegram')} />
         
         <ContactModal

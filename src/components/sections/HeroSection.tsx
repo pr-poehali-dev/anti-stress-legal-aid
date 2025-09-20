@@ -119,10 +119,6 @@ export default function HeroSection({ onModalOpen }: HeroSectionProps) {
             <Icon name="FileCheck" className="mr-2 flex-shrink-0" size={18} />
             <span className="whitespace-nowrap">Анализ претензии — 5000 ₽</span>
           </Button>
-          <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 md:px-8 py-4 md:py-6 border-2 border-professional-600 text-professional-700 hover:bg-professional-600 hover:text-white w-full sm:w-auto min-h-[56px] font-semibold tracking-wide transition-smooth" onClick={() => onModalOpen('consultation', 'Экспресс-консультация')}>
-            <Icon name="Phone" className="mr-2 flex-shrink-0" size={18} />
-            <span className="whitespace-nowrap">Экспресс‑консультация — 3000 ₽</span>
-          </Button>
           </div>
         </AnimatedSection>
       </div>
