@@ -238,17 +238,6 @@ export default function FormSection() {
                       </>
                     )}
                   </Button>
-                  
-                  <Button 
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={testTelegramSettings}
-                    className="w-full text-xs text-gray-500 border-gray-300"
-                  >
-                    <Icon name="Settings" className="mr-1" size={14} />
-                    Тест настроек Telegram
-                  </Button>
                 </div>
               </form>
             </CardContent>
