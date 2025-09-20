@@ -8,6 +8,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import FormSection from '@/components/sections/FormSection';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
+import AIAgent from '@/components/AIAgent';
 
 export default function Index() {
   const [modalState, setModalState] = useState({
@@ -86,6 +87,9 @@ export default function Index() {
           service={modalState.service}
           title={modalState.title}
         />
+        
+        {/* ИИ Агент */}
+        <AIAgent />
       </div>
     </div>
   );
