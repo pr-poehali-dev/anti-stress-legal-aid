@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "name": "Test OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "expectedStatus": 200,
+      "expectedBody": "",
+      "bodyMatcher": "exact"
+    },
+    {
+      "name": "Test Telegram settings check",
+      "method": "GET",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean",
+        "checks": "object",
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
