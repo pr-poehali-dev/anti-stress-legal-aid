@@ -22,10 +22,15 @@ export default function Footer({ onContactClick }: FooterProps) {
             Не знаете, с чего начать? Напишите мне в Telegram — отвечу за 1 час.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-2">
-            <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white w-full sm:w-auto text-sm sm:text-base py-3" onClick={onContactClick}>
+            <a 
+              href="https://t.me/pravointelect_bot" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white w-full sm:w-auto text-sm sm:text-base py-3 px-6 border rounded-lg transition-colors duration-200"
+            >
               <Icon name="Send" className="mr-2" size={20} />
               Telegram
-            </Button>
+            </a>
             <Button variant="outline" size="lg" className="border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white w-full sm:w-auto text-sm sm:text-base py-3" onClick={onContactClick}>
               <Icon name="Phone" className="mr-2" size={20} />
               +7 (XXX) XXX-XX-XX
