@@ -3,6 +3,5 @@
   "telegram-validate": "https://functions.poehali.dev/ee6c5392-38db-41b7-a354-553ccb8537c4",
   "notification-logs": "https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9",
   "telegram-chatid": "https://functions.poehali.dev/790803b7-14dd-41a8-a0af-dc93cfb897ee",
-  "telegram-test": "https://functions.poehali.dev/0d681bfa-61c4-45fc-87f0-98e65e50fc36",
   "telegram-notify": "https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b"
 }

@@ -5,53 +5,7 @@ import urllib.parse
 import requests
 from typing import Dict, Any
 from datetime import datetime
-
-def log_notification(channel: str, status: str, recipient: str, subject: str, message: str, error: str = None, metadata: dict = None):
-    """Log notification attempt to monitoring system"""
-    try:
-        log_data = {
-            'channel': channel,
-            'status': status,
-            'recipient': recipient,
-            'subject': subject,
-            'message': message[:500],  # Limit message length
-            'error_message': error,
-            'metadata': metadata or {}
-        }
-        
-        # Try to send to log function (don't fail main function if logging fails)
-        requests.post(
-            'https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9',
-            json=log_data,
-            timeout=5
-        )
-    except:
-        pass  # Logging failure shouldn't break main functionality
-
-def send_backup_email(body_data: dict, context, email_type: str = 'backup') -> bool:
-    """Send backup email notification"""
-    try:
-        # Add email type to body for proper handling
-        email_data = body_data.copy()
-        email_data['email_type'] = email_type
-        email_data['timestamp'] = email_data.get('timestamp', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        
-        response = requests.post(
-            'https://functions.poehali.dev/d9ad4234-e20a-4f33-a228-7ae29e45b0b4',
-            json=email_data,
-            timeout=15
-        )
-        
-        if response.status_code == 200:
-            result = response.json()
-            return result.get('success', False)
-        else:
-            print(f"Email backup failed: {response.status_code}")
-            return False
-            
-    except Exception as e:
-        print(f"Email backup error: {str(e)}")
-        return False
+import time
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
@@ -112,40 +66,15 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'body': json.dumps({'error': 'Доступна только тема "Авторские права"'})
         }
     
-    # Получаем настройки Telegram (используем новые секреты)
+    # Получаем настройки Telegram
     bot_token = os.environ.get('TELEGRAM_BOT_TOKEN_NEW') or os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID_NEW') or os.environ.get('TELEGRAM_CHAT_ID')
     
-    print(f"DEBUG: bot_token exists: {bool(bot_token)}")
-    print(f"DEBUG: chat_id: {chat_id}")
-    
-    if not bot_token:
+    if not bot_token or not chat_id:
         return {
             'statusCode': 500,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'TELEGRAM_BOT_TOKEN не настроен'})
-        }
-    
-    if not chat_id:
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'TELEGRAM_CHAT_ID не настроен'})
-        }
-    
-    # Дополнительная проверка форматов (частая ошибка - перепутанные секреты)
-    if ':' in chat_id or len(chat_id) > 15:
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'TELEGRAM_CHAT_ID содержит токен бота. Проверьте секреты - возможно они перепутаны местами'})
-        }
-    
-    if ':' not in bot_token or len(bot_token) < 40:
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': 'TELEGRAM_BOT_TOKEN должен содержать : и быть длиннее 40 символов. Проверьте секреты'})
+            'body': json.dumps({'error': 'Настройки Telegram не найдены'})
         }
     
     # Формируем сообщение
@@ -162,78 +91,89 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 💬 Сообщение:
 {message_text if message_text else 'Не указано'}
 
-🆔 ID заявки: {getattr(context, 'request_id', 'unknown')}
-📅 Время: {body_data.get('timestamp', 'не указано')}"""
+📅 Время: {body_data.get('timestamp', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))}"""
     
-    # Отправляем в Telegram
-    try:
-        telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        print(f"DEBUG: Sending to Telegram URL: {telegram_url[:50]}...")
-        
-        data = {
-            'chat_id': chat_id,
-            'text': telegram_message,
-            'parse_mode': 'HTML'
-        }
-        
-        encoded_data = urllib.parse.urlencode(data).encode('utf-8')
-        
-        req = urllib.request.Request(
-            telegram_url,
-            data=encoded_data,
-            headers={'Content-Type': 'application/x-www-form-urlencoded'}
-        )
-        
-        with urllib.request.urlopen(req, timeout=10) as response:
-            response_text = response.read().decode('utf-8')
-            print(f"DEBUG: Telegram response: {response_text}")
-            telegram_response = json.loads(response_text)
+    # Отправляем в Telegram с retry логикой
+    telegram_success = False
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        try:
+            telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
             
-            if not telegram_response.get('ok'):
-                print(f"ERROR: Telegram API error: {telegram_response}")
-                log_notification('telegram', 'failed', chat_id, f'Заказ от {name}', telegram_message, 
-                               str(telegram_response), {'service': service, 'urgency': urgency})
-                raise Exception(f"Telegram API error: {telegram_response}")
-            else:
-                # Success logging
-                log_notification('telegram', 'success', chat_id, f'Заказ от {name}', telegram_message, 
-                               None, {'service': service, 'urgency': urgency})
+            data = {
+                'chat_id': chat_id,
+                'text': telegram_message,
+                'parse_mode': 'HTML'
+            }
+            
+            encoded_data = urllib.parse.urlencode(data).encode('utf-8')
+            
+            req = urllib.request.Request(
+                telegram_url,
+                data=encoded_data,
+                headers={'Content-Type': 'application/x-www-form-urlencoded'}
+            )
+            
+            with urllib.request.urlopen(req, timeout=15) as response:
+                response_text = response.read().decode('utf-8')
+                telegram_response = json.loads(response_text)
                 
-                # ALWAYS send backup email after successful Telegram
-                send_backup_email(body_data, context, 'backup')
+                if telegram_response.get('ok'):
+                    telegram_success = True
+                    break
+                else:
+                    error_msg = telegram_response.get('description', 'Unknown error')
+                    # Don't retry on certain permanent errors
+                    if 'chat not found' in error_msg.lower() or 'bot was blocked' in error_msg.lower():
+                        break
+                        
+        except Exception as e:
+            print(f"Telegram attempt {attempt + 1} failed: {str(e)}")
+            
+        # Wait before retry (except on last attempt)
+        if attempt < max_retries - 1:
+            time.sleep(1)
     
-    except Exception as e:
-        print(f"ERROR: Exception in Telegram send: {str(e)}")
-        log_notification('telegram', 'error', chat_id, f'Заказ от {name}', telegram_message, 
-                       str(e), {'service': service, 'urgency': urgency})
-        
+    # Handle result
+    if telegram_success:
+        return {
+            'statusCode': 200,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({
+                'success': True,
+                'message': 'Заявка успешно отправлена!'
+            })
+        }
+    else:
         # Send backup email when Telegram fails
-        email_result = send_backup_email(body_data, context, 'fallback')
+        try:
+            email_data = body_data.copy()
+            email_data['email_type'] = 'fallback'
+            email_data['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            
+            response = requests.post(
+                'https://functions.poehali.dev/d9ad4234-e20a-4f33-a228-7ae29e45b0b4',
+                json=email_data,
+                timeout=20,
+                headers={'Content-Type': 'application/json'}
+            )
+            
+            if response.status_code == 200 and response.json().get('success'):
+                return {
+                    'statusCode': 200,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({
+                        'success': True,
+                        'message': 'Telegram недоступен, заявка отправлена по email',
+                        'fallback': True
+                    })
+                }
+        except:
+            pass
         
-        if email_result:
-            return {
-                'statusCode': 200,
-                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                'body': json.dumps({
-                    'success': True,
-                    'message': 'Telegram недоступен, заявка отправлена по email',
-                    'fallback': True,
-                    'request_id': getattr(context, 'request_id', 'unknown')
-                })
-            }
-        else:
-            return {
-                'statusCode': 500,
-                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                'body': json.dumps({'error': f'Ошибка отправки в Telegram и email: {str(e)}'})
-            }
-    
-    return {
-        'statusCode': 200,
-        'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-        'body': json.dumps({
-            'success': True,
-            'message': 'Заявка успешно отправлена!',
-            'request_id': getattr(context, 'request_id', 'unknown')
-        })
-    }
+        return {
+            'statusCode': 500,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'Ошибка отправки уведомления'})
+        }
