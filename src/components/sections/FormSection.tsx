@@ -93,36 +93,7 @@ export default function FormSection() {
     setFormData(prev => ({ ...prev, file }));
   };
 
-  const testTelegramSettings = async () => {
-    try {
-      toast.info('Проверяю настройки Telegram...');
-      
-      const response = await fetch('https://functions.poehali.dev/0d681bfa-61c4-45fc-87f0-98e65e50fc36', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
 
-      if (response.ok) {
-        const result = await response.json();
-        
-        if (result.details?.telegram_api_test) {
-          toast.success('✅ Telegram настроен корректно! Проверьте чат.');
-        } else {
-          toast.error(`❌ Проблема: ${result.errors?.join(', ') || 'Неизвестная ошибка'}`);
-          if (result.recommendations?.length > 0) {
-            toast.info(`Рекомендации: ${result.recommendations.join(', ')}`);
-          }
-        }
-      } else {
-        toast.error('Ошибка тестирования настроек');
-      }
-    } catch (error) {
-      toast.error('Не удалось проверить настройки');
-      console.error('Test error:', error);
-    }
-  };
 
   return (
     <section className="py-20 bg-gradient-to-br from-professional-50 to-white">
