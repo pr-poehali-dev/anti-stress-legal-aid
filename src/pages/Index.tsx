@@ -33,22 +33,47 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50">
-      <Header onContactClick={() => openModal('consultation', 'Связаться с юристом')} />
-      <HeroSection onModalOpen={openModal} />
-      <ServicesSection onModalOpen={openModal} />
-      <CasesSection />
-      <WhyMeSection />
-      <FAQSection />
-      <FormSection />
-      <Footer onContactClick={() => openModal('consultation', 'Связаться в Telegram')} />
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50 relative overflow-hidden">
+      {/* Декоративные элементы фона */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Большие круги */}
+        <div className="absolute top-20 -right-32 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-96 -left-24 w-48 h-48 bg-professional-200/20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-32 right-24 w-56 h-56 bg-blue-200/15 rounded-full blur-3xl"></div>
+        
+        {/* Геометрические фигуры */}
+        <div className="absolute top-64 right-1/4 w-32 h-32 bg-gradient-to-br from-professional-100/10 to-blue-100/10 rotate-45 blur-xl"></div>
+        <div className="absolute bottom-64 left-1/3 w-24 h-24 bg-gradient-to-tr from-blue-200/15 to-professional-200/15 rotate-12 blur-lg"></div>
+        
+        {/* Тонкие линии */}
+        <div className="absolute top-40 left-0 w-full h-px bg-gradient-to-r from-transparent via-professional-200/30 to-transparent"></div>
+        <div className="absolute bottom-40 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-200/30 to-transparent"></div>
+        
+        {/* Точечный паттерн */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(59 130 246) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
+      </div>
       
-      <ContactModal
-        isOpen={modalState.isOpen}
-        onClose={closeModal}
-        service={modalState.service}
-        title={modalState.title}
-      />
+      {/* Контент страницы */}
+      <div className="relative z-10">
+        <Header onContactClick={() => openModal('consultation', 'Связаться с юристом')} />
+        <HeroSection onModalOpen={openModal} />
+        <ServicesSection onModalOpen={openModal} />
+        <CasesSection />
+        <WhyMeSection />
+        <FAQSection />
+        <FormSection />
+        <Footer onContactClick={() => openModal('consultation', 'Связаться в Telegram')} />
+        
+        <ContactModal
+          isOpen={modalState.isOpen}
+          onClose={closeModal}
+          service={modalState.service}
+          title={modalState.title}
+        />
+      </div>
     </div>
   );
 }
