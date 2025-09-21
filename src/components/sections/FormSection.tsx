@@ -205,7 +205,7 @@ export default function FormSection() {
                     ) : (
                       <>
                         <Icon name="Send" className="mr-1 sm:mr-2" size={16} />
-                        <span className="text-center leading-tight">Отправить претензию на анализ — 5000 ₽</span>
+                        <span className="text-center leading-tight">Отправить претензию на анализ</span>
                       </>
                     )}
                   </Button>
