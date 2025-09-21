@@ -24,6 +24,21 @@ export default function FormSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Функция для преобразования файла в base64
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result as string;
+        // Убираем префикс "data:mime/type;base64,"
+        const base64 = result.split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = reject;
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -36,8 +51,27 @@ export default function FormSection() {
         return;
       }
 
-      // Отправляем данные в Telegram (без файла, просто описание)
-      const response = await fetch('https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b', {
+      // Преобразуем файл в base64
+      let fileData = null;
+      if (formData.file) {
+        try {
+          const base64Content = await fileToBase64(formData.file);
+          fileData = {
+            name: formData.file.name,
+            type: formData.file.type,
+            size: formData.file.size,
+            data: base64Content
+          };
+        } catch (error) {
+          console.error('Ошибка обработки файла:', error);
+          toast.error('❌ Ошибка обработки файла. Попробуйте другой файл.');
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      // Отправляем данные в новую функцию с поддержкой файлов
+      const response = await fetch('https://functions.poehali.dev/f4d7ab5d-d741-4141-8316-1bc236d02b37', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,9 +79,8 @@ export default function FormSection() {
         body: JSON.stringify({
           name: formData.name,
           contact: formData.contact,
-          service: 'Авторские права',
-          urgency: 'Анализ претензии',
-          message: `Запрос на анализ претензии:\n\nОписание: ${formData.description || 'Не указано'}\nФайл: ${formData.file?.name || 'Загружен'}\n\nСтоимость: 5000 ₽`,
+          description: formData.description,
+          file: fileData,
           timestamp: new Date().toLocaleString('ru-RU')
         })
       });
@@ -67,7 +100,10 @@ export default function FormSection() {
         const fileInput = document.getElementById('file') as HTMLInputElement;
         if (fileInput) fileInput.value = '';
         
-        toast.success('🎉 Заявка на анализ отправлена! Свяжемся с вами в течение часа для уточнения деталей.');
+        const successMessage = result.file_sent 
+          ? '🎉 Заявка и файл успешно отправлены! Свяжемся с вами в течение часа.'
+          : '🎉 Заявка отправлена! Файл будет обработан отдельно. Свяжемся с вами в течение часа.';
+        toast.success(successMessage);
       } else {
         throw new Error(result.error || 'Ошибка отправки');
       }
