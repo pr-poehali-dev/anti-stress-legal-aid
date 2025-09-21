@@ -1,18 +1,15 @@
 import json
 import os
-import urllib.request
-import urllib.parse
 import requests
 from typing import Dict, Any
 from datetime import datetime
 import time
-import mimetypes
-import io
+import base64
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
     Business: Отправляет заявки на анализ претензий в Telegram с файлами
-    Args: event - dict с httpMethod, body, headers (multipart/form-data)
+    Args: event - dict с httpMethod, body, headers
           context - object с request_id и другими атрибутами  
     Returns: HTTP response dict
     '''
@@ -34,7 +31,10 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if method != 'POST':
         return {
             'statusCode': 405,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'headers': {
+                'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*'
+            },
             'isBase64Encoded': False,
             'body': json.dumps({'error': 'Метод не поддерживается'})
         }
@@ -46,18 +46,24 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if not bot_token or not chat_id:
         return {
             'statusCode': 500,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'headers': {
+                'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*'
+            },
             'isBase64Encoded': False,
             'body': json.dumps({'error': 'Настройки Telegram не найдены'})
         }
 
-    # Парсим данные из body (JSON формат из фронтенда)
+    # Парсим данные из body
     try:
         body_data = json.loads(event.get('body', '{}'))
     except json.JSONDecodeError:
         return {
             'statusCode': 400,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'headers': {
+                'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*'
+            },
             'isBase64Encoded': False,
             'body': json.dumps({'error': 'Неверный формат данных'})
         }
@@ -71,7 +77,10 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if not all([name, contact]):
         return {
             'statusCode': 400,
-            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'headers': {
+                'Content-Type': 'application/json', 
+                'Access-Control-Allow-Origin': '*'
+            },
             'isBase64Encoded': False,
             'body': json.dumps({'error': 'Заполните все обязательные поля'})
         }
@@ -98,24 +107,17 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         try:
             telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
             
-            data = {
-                'chat_id': chat_id,
-                'text': telegram_message,
-                'parse_mode': 'HTML'
-            }
-            
-            encoded_data = urllib.parse.urlencode(data).encode('utf-8')
-            
-            req = urllib.request.Request(
+            response = requests.post(
                 telegram_url,
-                data=encoded_data,
-                headers={'Content-Type': 'application/x-www-form-urlencoded'}
+                data={
+                    'chat_id': chat_id,
+                    'text': telegram_message
+                },
+                timeout=15
             )
             
-            with urllib.request.urlopen(req, timeout=15) as response:
-                response_text = response.read().decode('utf-8')
-                telegram_response = json.loads(response_text)
-                
+            if response.status_code == 200:
+                telegram_response = response.json()
                 if telegram_response.get('ok'):
                     telegram_success = True
                     break
@@ -135,49 +137,29 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if telegram_success and file_data and 'data' in file_data:
         try:
             # Декодируем base64 файл
-            import base64
             file_content = base64.b64decode(file_data['data'])
             file_name = file_data.get('name', 'document.pdf')
-            
-            # Определяем тип файла
-            mime_type = file_data.get('type') or mimetypes.guess_type(file_name)[0] or 'application/octet-stream'
             
             # Отправляем файл в Telegram
             file_url = f"https://api.telegram.org/bot{bot_token}/sendDocument"
             
-            # Формируем multipart данные
-            boundary = '----WebKitFormBoundary' + str(int(time.time()))
+            files = {
+                'document': (file_name, file_content, file_data.get('type', 'application/octet-stream'))
+            }
             
-            multipart_data = []
-            multipart_data.append(f'--{boundary}')
-            multipart_data.append('Content-Disposition: form-data; name="chat_id"')
-            multipart_data.append('')
-            multipart_data.append(chat_id)
+            data = {
+                'chat_id': chat_id
+            }
             
-            multipart_data.append(f'--{boundary}')
-            multipart_data.append(f'Content-Disposition: form-data; name="document"; filename="{file_name}"')
-            multipart_data.append(f'Content-Type: {mime_type}')
-            multipart_data.append('')
-            
-            # Собираем данные
-            multipart_str = '\r\n'.join(multipart_data) + '\r\n'
-            multipart_bytes = multipart_str.encode('utf-8')
-            multipart_bytes += file_content
-            multipart_bytes += f'\r\n--{boundary}--\r\n'.encode('utf-8')
-            
-            req = urllib.request.Request(
+            response = requests.post(
                 file_url,
-                data=multipart_bytes,
-                headers={
-                    'Content-Type': f'multipart/form-data; boundary={boundary}',
-                    'Content-Length': str(len(multipart_bytes))
-                }
+                files=files,
+                data=data,
+                timeout=30
             )
             
-            with urllib.request.urlopen(req, timeout=30) as response:
-                response_text = response.read().decode('utf-8')
-                file_response = json.loads(response_text)
-                
+            if response.status_code == 200:
+                file_response = response.json()
                 if file_response.get('ok'):
                     file_sent = True
                     
@@ -186,17 +168,14 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             # Отправляем сообщение о том, что файл не удалось отправить
             try:
                 error_msg = f"⚠️ Файл '{file_data.get('name', 'документ')}' не удалось отправить. Попросите клиента прислать его повторно."
-                error_data = {
-                    'chat_id': chat_id,
-                    'text': error_msg
-                }
-                encoded_error = urllib.parse.urlencode(error_data).encode('utf-8')
-                error_req = urllib.request.Request(
+                requests.post(
                     f"https://api.telegram.org/bot{bot_token}/sendMessage",
-                    data=encoded_error,
-                    headers={'Content-Type': 'application/x-www-form-urlencoded'}
+                    data={
+                        'chat_id': chat_id,
+                        'text': error_msg
+                    },
+                    timeout=10
                 )
-                urllib.request.urlopen(error_req, timeout=10)
             except:
                 pass
 

@@ -1,9 +1,9 @@
 {
+  "telegram-files": "https://functions.poehali.dev/2406ddef-7b3a-42d3-9526-299b358e37b3",
   "telegram-check": "https://functions.poehali.dev/caa09c80-487a-4b79-b4bc-8629fad14399",
   "email-backup": "https://functions.poehali.dev/d9ad4234-e20a-4f33-a228-7ae29e45b0b4",
   "telegram-validate": "https://functions.poehali.dev/ee6c5392-38db-41b7-a354-553ccb8537c4",
   "notification-logs": "https://functions.poehali.dev/e74ceb41-1c4c-4834-93ce-1c8ca94144d9",
   "telegram-chatid": "https://functions.poehali.dev/790803b7-14dd-41a8-a0af-dc93cfb897ee",
-  "telegram-notify": "https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b",
-  "file-telegram-notify": "https://functions.poehali.dev/f4d7ab5d-d741-4141-8316-1bc236d02b37"
+  "telegram-notify": "https://functions.poehali.dev/75ac2973-1391-4cba-beaf-6d4d7549055b"
 }

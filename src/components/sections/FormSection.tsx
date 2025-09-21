@@ -71,7 +71,7 @@ export default function FormSection() {
       }
 
       // Отправляем данные в новую функцию с поддержкой файлов
-      const response = await fetch('https://functions.poehali.dev/f4d7ab5d-d741-4141-8316-1bc236d02b37', {
+      const response = await fetch('https://functions.poehali.dev/2406ddef-7b3a-42d3-9526-299b358e37b3', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
