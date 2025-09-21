@@ -14,31 +14,31 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   return (
     <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 md:py-4">
+      <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-3 md:py-4">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Link to="/">
               <img 
                 src="/img/694efd06-400d-4cfb-9679-efd28ff9a896.jpg" 
                 alt="ПравоПомощь 24/7" 
-                className="h-10 md:h-12 w-auto hover:opacity-80 transition-opacity"
+                className="h-8 sm:h-10 md:h-12 w-auto hover:opacity-80 transition-opacity"
               />
             </Link>
           </div>
           
           {/* Мобильное меню */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button size="sm" className="bg-professional-600 hover:bg-professional-700 text-xs px-3 py-2 min-h-[36px] font-medium" onClick={onContactClick}>
-              <Icon name="MessageCircle" className="mr-1 flex-shrink-0" size={14} />
-              <span className="whitespace-nowrap">Связаться</span>
+            <Button size="sm" className="bg-professional-600 hover:bg-professional-700 text-xs px-2 sm:px-3 py-2 min-h-[32px] sm:min-h-[36px] font-medium" onClick={onContactClick}>
+              <Icon name="MessageCircle" className="mr-1 flex-shrink-0" size={12} />
+              <span className="whitespace-nowrap text-xs">Связь</span>
             </Button>
             <Button 
               variant="ghost" 
               size="sm" 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
+              className="p-1 sm:p-2"
             >
-              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={20} />
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={18} />
             </Button>
           </div>
           

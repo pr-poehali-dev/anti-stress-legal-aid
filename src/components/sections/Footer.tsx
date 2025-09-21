@@ -8,25 +8,25 @@ interface FooterProps {
 
 export default function Footer({ onContactClick }: FooterProps) {
   return (
-    <footer className="bg-trust-900 text-white py-8 md:py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-trust-900 text-white py-6 sm:py-8 md:py-12">
+      <div className="container mx-auto px-3 sm:px-4">
         <div className="text-center">
           <div className="flex items-center justify-center mb-6">
             <img 
               src="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" 
               alt="ПравоПомощь 24/7" 
-              className="h-12 md:h-16 w-auto filter brightness-0 invert"
+              className="h-10 sm:h-12 md:h-16 w-auto filter brightness-0 invert"
             />
           </div>
-          <p className="text-trust-300 mb-6 md:mb-8 max-w-2xl mx-auto text-sm sm:text-base px-2">
+          <p className="text-trust-300 mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto text-xs sm:text-sm md:text-base px-2">
             Не знаете, с чего начать? Напишите мне в Telegram — отвечу за 1 час.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-2">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-3 sm:px-2">
             <a 
               href="https://t.me/pravointelect_bot" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white w-full sm:w-auto text-sm sm:text-base py-3 px-6 border rounded-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center border-professional-400 text-professional-400 hover:bg-professional-400 hover:text-white w-full sm:w-auto text-xs sm:text-sm md:text-base py-2 sm:py-3 px-4 sm:px-6 border rounded-lg transition-colors duration-200"
             >
               <Icon name="Send" className="mr-2" size={20} />
               Telegram
