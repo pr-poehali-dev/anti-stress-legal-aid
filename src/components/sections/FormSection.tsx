@@ -195,17 +195,17 @@ export default function FormSection() {
                     type="submit" 
                     size="lg" 
                     disabled={isSubmitting}
-                    className="w-full bg-professional-600 hover:bg-professional-700 text-lg py-6"
+                    className="w-full bg-professional-600 hover:bg-professional-700 text-sm sm:text-base md:text-lg py-4 sm:py-5 md:py-6 min-h-[52px] sm:min-h-[56px] md:min-h-[64px] font-semibold touch-manipulation"
                   >
                     {isSubmitting ? (
                       <>
-                        <Icon name="Loader2" className="mr-2 animate-spin" size={20} />
+                        <Icon name="Loader2" className="mr-1 sm:mr-2 animate-spin" size={16} />
                         Отправляем...
                       </>
                     ) : (
                       <>
-                        <Icon name="Send" className="mr-2" size={20} />
-                        Отправить претензию на анализ — 5000 ₽
+                        <Icon name="Send" className="mr-1 sm:mr-2" size={16} />
+                        <span className="text-center leading-tight">Отправить претензию на анализ — 5000 ₽</span>
                       </>
                     )}
                   </Button>
