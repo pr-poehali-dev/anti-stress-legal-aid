@@ -27,9 +27,7 @@ export default function AIAgent() {
           <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl h-[80vh] relative overflow-hidden">
             {/* Заголовок */}
             <div className="flex items-center justify-between p-4 border-b bg-professional-50">
-              <h3 className="text-lg font-semibold text-trust-900">
-                ИИ Помощник по правовым вопросам
-              </h3>
+              <h3 className="text-lg font-semibold text-trust-900">Помощник по правовым вопросам</h3>
               <button
                 onClick={toggleAgent}
                 className="text-gray-500 hover:text-gray-700 transition-colors"
