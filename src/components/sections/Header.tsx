@@ -19,7 +19,7 @@ export default function Header({ onContactClick }: HeaderProps) {
           <div className="flex items-center space-x-3">
             <Link to="/">
               <img 
-                src="/img/694efd06-400d-4cfb-9679-efd28ff9a896.jpg" 
+                src="https://cdn.poehali.dev/files/fda85157-878b-4e33-bab9-c2ee0f6a9ea8.png" 
                 alt="ПравоПомощь 24/7" 
                 className="h-8 sm:h-10 md:h-12 w-auto hover:opacity-80 transition-opacity"
               />
