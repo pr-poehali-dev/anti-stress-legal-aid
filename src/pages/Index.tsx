@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
-import DangerSection from '@/components/sections/DangerSection';
-import ProcessSection from '@/components/sections/ProcessSection';
-import BenefitsSection from '@/components/sections/BenefitsSection';
-import CasesSection from '@/components/sections/CasesSection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import FAQSection from '@/components/sections/FAQSection';
 import ServicesSection from '@/components/sections/ServicesSection';
-import ChecklistSection from '@/components/sections/ChecklistSection';
+import CasesSection from '@/components/sections/CasesSection';
+import WhyMeSection from '@/components/sections/WhyMeSection';
+import FAQSection from '@/components/sections/FAQSection';
 import FormSection from '@/components/sections/FormSection';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -79,14 +75,10 @@ export default function Index() {
       <div className="relative z-10">
         <Header onContactClick={() => openModal('consultation', 'Связаться с юристом')} />
         <HeroSection onModalOpen={openModal} />
-        <DangerSection />
-        <ProcessSection />
-        <BenefitsSection />
-        <CasesSection />
-        <TestimonialsSection />
-        <FAQSection />
         <ServicesSection onModalOpen={openModal} />
-        <ChecklistSection />
+        <CasesSection />
+        <WhyMeSection />
+        <FAQSection />
         <FormSection />
         <Footer onContactClick={() => openModal('consultation', 'Связаться в Telegram')} />
         
