@@ -1,17 +1,10 @@
 User-agent: *
 Allow: /
 
-# Основные страницы и разделы
+# Основные страницы
 Allow: /
-Allow: /#services
-Allow: /#pricing
-Allow: /#how-it-works
-Allow: /#benefits
-Allow: /#faq
-Allow: /#stats
-Allow: /#testimonials
-Allow: /#blog
-Allow: /#blog/*
+Allow: /blog
+Allow: /blog/*
 
 # Разрешаем поисковым роботам индексировать изображения и статические файлы
 Allow: /assets/
@@ -25,53 +18,31 @@ Allow: /*.gif
 Allow: /*.svg
 Allow: /*.webp
 Allow: /*.ico
-Allow: /*.woff
-Allow: /*.woff2
-Allow: /*.ttf
 
-# Файлы верификации и манифесты
+# Файлы верификации
 Allow: /yandex_*.html
-Allow: /google*.html
-Allow: /manifest.json
-Allow: /sw.js
-Allow: /sitemap.xml
 
-# Запрещаем служебные файлы и директории разработки
+# Запрещаем служебные файлы
 Disallow: /src/
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.vscode/
 Disallow: /dist/
 Disallow: /build/
-Disallow: /*.map
-Disallow: /package.json
-Disallow: /package-lock.json
-Disallow: /tsconfig.json
 
-# Настройки для Google
+# Настройки для конкретных поисковых систем
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
-User-agent: Googlebot-Image
-Allow: /img/
-Allow: /assets/
-
-# Настройки для Яндекс
 User-agent: Yandex
 Allow: /
 Crawl-delay: 1
 
-User-agent: YandexImages
-Allow: /img/
-Allow: /assets/
-
-# Настройки для Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Социальные сети (для превью)
 User-agent: Twitterbot
 Allow: /
 
@@ -81,13 +52,7 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-User-agent: TelegramBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# Блокируем спам-ботов и парсеры
+# Блокируем спам-ботов
 User-agent: SemrushBot
 Disallow: /
 
@@ -97,17 +62,5 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-User-agent: DotBot
-Disallow: /
-
-User-agent: BLEXBot
-Disallow: /
-
-User-agent: SeznamBot
-Disallow: /
-
-User-agent: MegaIndex
-Disallow: /
-
-# Указываем путь к карте сайта
+# Указываем путь к карте сайта (обновлено для блога)
 Sitemap: https://yourdomain.com/sitemap.xml
