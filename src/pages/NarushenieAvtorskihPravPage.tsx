@@ -104,6 +104,21 @@ export default function NarushenieAvtorskihPravPage() {
         <title>Нарушение авторских прав: ответственность, суд, защита | Интелект</title>
         <meta name="description" content="Ответственность за нарушение авторских прав: уголовная и гражданская. Помощь при обвинениях, защита в суде. Консультация от 5000₽." />
         <meta name="keywords" content="нарушение авторских прав, ответственность за нарушение авторских прав, защита авторских прав, суд авторские права, статья 146 ук рф, компенсация за нарушение авторских прав" />
+        <link rel="canonical" href="https://intelect.pro/uslugi/zashchita-avtorskih-prav/sud-otvetstvennost" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://intelect.pro/uslugi/zashchita-avtorskih-prav/sud-otvetstvennost" />
+        <meta property="og:title" content="Защита от обвинений в нарушении авторских прав — Интелект" />
+        <meta property="og:description" content="Получили претензию? Защитим от необоснованных обвинений, снизим компенсацию в 5-10 раз. Консультация от 5000₽." />
+        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:locale" content="ru_RU" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Защита от обвинений в нарушении авторских прав" />
+        <meta name="twitter:description" content="Защитим от претензий, снизим компенсацию в 5-10 раз. От 5000₽." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
       </Helmet>
 
       <StructuredData 

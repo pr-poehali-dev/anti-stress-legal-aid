@@ -144,6 +144,20 @@ export default function TovarnyyZnakPage() {
         <title>Регистрация и защита товарного знака | Проверка ТЗ | Роспатент</title>
         <meta name="description" content="Регистрация товарного знака под ключ от 60 000 ₽. Проверка ТЗ, подача заявки в Роспатент, защита от нарушений. Срок регистрации 10-14 месяцев." />
         <meta name="keywords" content="регистрация товарного знака, проверка товарного знака, как зарегистрировать товарный знак, товарный знак стоимость, регистрация товарного знака роспатент, товарный знак под ключ, защита товарного знака, нарушение товарного знака, споры о товарных знаках" />
+        
+        <link rel="canonical" href="https://intelect.pro/uslugi/tovarnyy-znak" />
+        
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://intelect.pro/uslugi/tovarnyy-znak" />
+        <meta property="og:title" content="Регистрация и защита товарного знака — Интелект" />
+        <meta property="og:description" content="Регистрация под ключ от 60 000₽. Проверка, подача в Роспатент за 10-14 месяцев." />
+        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:locale" content="ru_RU" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Регистрация товарного знака" />
+        <meta name="twitter:description" content="Под ключ от 60 000₽ за 3 класса МКТУ. Полное сопровождение в Роспатенте: проверка, подача, получение свидетельства." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
       </Helmet>
       
       <StructuredData 

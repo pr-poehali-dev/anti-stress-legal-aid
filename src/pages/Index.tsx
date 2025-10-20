@@ -42,7 +42,25 @@ export default function Index() {
         <title>Юрист по авторским правам и интеллектуальной собственности | Защита прав</title>
         <meta name="description" content="Юрист по защите авторских прав, товарных знаков и интеллектуальной собственности. Регистрация ТЗ, судебная защита, DMCA, аудит бизнеса. Опыт 10+ лет, 200+ выигранных дел." />
         <meta name="keywords" content="юрист по авторским правам, защита авторских прав, товарный знак регистрация, интеллектуальная собственность юрист, нарушение авторских прав, dmca жалоба, юрист для маркетплейса, патент регистрация, защита интеллектуальной собственности" />
-        <link rel="canonical" href="https://yoursite.com/" />
+        <link rel="canonical" href="https://intelect.pro/" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://intelect.pro/" />
+        <meta property="og:title" content="Интелект — Юрист по авторским правам и интеллектуальной собственности" />
+        <meta property="og:description" content="Защита авторских прав, регистрация товарных знаков, судебная защита. Опыт 10+ лет, 200+ выигранных дел. Консультация за 24 часа." />
+        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="ru_RU" />
+        <meta property="og:site_name" content="Интелект" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://intelect.pro/" />
+        <meta name="twitter:title" content="Интелект — Юрист по авторским правам и ИС" />
+        <meta name="twitter:description" content="Защита авторских прав, регистрация товарных знаков, судебная защита. Опыт 10+ лет." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
       </Helmet>
       
       <StructuredData type="Organization" />

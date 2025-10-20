@@ -146,6 +146,20 @@ export default function DMCABlokirovkaPage() {
         <title>DMCA жалоба: блокировка контента, удаление с сайтов и маркетплейсов | Интелект</title>
         <meta name="description" content="Подача DMCA жалоб правообладателя. Удаление контента с Wildberries, Ozon, Avito, YouTube. Блокировка пиратских копий. Консультация от 5000₽." />
         <meta name="keywords" content="dmca жалоба, жалоба правообладателя, подать жалобу правообладателю, dmca, удаление контента, блокировка контента, жалоба правообладателя вайлдберриз, жалоба правообладателя авито, dmca youtube" />
+        
+        <link rel="canonical" href="https://intelect.pro/uslugi/zashchita-avtorskih-prav/blokirovka-i-udaleniya" />
+        
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://intelect.pro/uslugi/zashchita-avtorskih-prav/blokirovka-i-udaleniya" />
+        <meta property="og:title" content="DMCA-жалобы и блокировка контента — Интелект" />
+        <meta property="og:description" content="Удаление за 24-48 часов от 5 000₽. DMCA-жалобы на Google, YouTube, маркетплейсы." />
+        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:locale" content="ru_RU" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="DMCA-жалобы и блокировка контента" />
+        <meta name="twitter:description" content="Удаление контента с YouTube, Google, WB, Ozon за 24-48 часов. DMCA-жалобы от 5 000₽. Результат гарантирован." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
       </Helmet>
       
       <StructuredData 

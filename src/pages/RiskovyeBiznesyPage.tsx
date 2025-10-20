@@ -123,6 +123,20 @@ export default function RiskovyeBiznesyPage() {
         <title>Юридическое сопровождение рисковых бизнесов | Проверка на нарушения</title>
         <meta name="description" content="Проверка бизнеса на авторские права, товарные знаки, рекламное законодательство. Аудит маркетплейсов, соцсетей, инфобизнеса. Защита от блокировок." />
         <meta name="keywords" content="юрист для маркетплейса, юрист для вайлдберриз, юрист для озон, юрист для инфобизнеса, проверка бизнеса на нарушения, аудит маркетплейса, разблокировка магазина, защита селлера, юридическая проверка бизнеса, авторские права маркетплейс" />
+        
+        <link rel="canonical" href="https://intelect.pro/uslugi/riskovye-biznesy" />
+        
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://intelect.pro/uslugi/riskovye-biznesy" />
+        <meta property="og:title" content="Юридическое сопровождение рисковых бизнесов — Интелект" />
+        <meta property="og:description" content="Аудит от 30 000₽ за 3 дня. Защита от блокировок маркетплейсов и соцсетей." />
+        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:locale" content="ru_RU" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Юридическое сопровождение рисковых бизнесов" />
+        <meta name="twitter:description" content="Аудит маркетплейсов и инфобизнеса от 30 000₽. Защита от блокировок за 3-7 дней." />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
       </Helmet>
       
       <StructuredData 
