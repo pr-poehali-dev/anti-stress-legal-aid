@@ -102,5 +102,41 @@
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Страницы услуг -->
+  <url>
+    <loc>https://intelect.pro/uslugi/zashchita-avtorskih-prav/sud-otvetstvennost</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://intelect.pro/uslugi/zashchita-avtorskih-prav/blokirovka-i-udaleniya</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://intelect.pro/uslugi/riskovye-biznesy</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://intelect.pro/uslugi/tovarnyy-znak</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://intelect.pro/uslugi/intellektualnaya-sobstvennost</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
 </urlset>

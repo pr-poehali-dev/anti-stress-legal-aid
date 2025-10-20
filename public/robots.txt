@@ -1,6 +1,13 @@
 User-agent: *
-Disallow: /wp-admin/
-Allow: /wp-admin/admin-ajax.php
+Allow: /
 
+# Запрещаем индексацию технических файлов
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /node_modules/
+
+# Основная карта сайта
 Sitemap: https://intelect.pro/sitemap.xml
+
+# Основной домен
 Host: https://intelect.pro
