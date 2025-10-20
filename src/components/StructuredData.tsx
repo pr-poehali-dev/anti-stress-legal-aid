@@ -90,24 +90,21 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
       structuredData = {
         '@context': 'https://schema.org',
         '@type': 'Service',
-        serviceType: data?.name || 'Юридические услуги',
+        name: data?.name || 'Юридические услуги',
+        serviceType: data?.serviceType || data?.name || 'Юридические услуги',
         provider: {
-          '@type': 'Person',
-          name: 'Юрист по авторским правам'
+          '@type': 'Organization',
+          name: 'Интелект'
         },
-        description: data?.description || '',
-        areaServed: {
-          '@type': 'Country',
-          name: 'Россия'
-        },
+        areaServed: 'RU',
         ...(data?.priceRange && {
           offers: {
             '@type': 'Offer',
+            priceCurrency: 'RUB',
             price: data.priceRange,
-            priceCurrency: 'RUB'
+            availability: 'https://schema.org/InStock'
           }
-        }),
-        url: data?.url || 'https://yoursite.com'
+        })
       };
       break;
 

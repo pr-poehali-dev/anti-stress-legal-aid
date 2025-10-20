@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import StructuredData from '@/components/StructuredData';
 import { ArrowLeft, ShieldAlert, FileCheck, Trash2, Clock, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -101,6 +102,21 @@ export default function DMCABlokirovkaPage() {
     }
   ];
 
+  const serviceFaqItems = [
+    {
+      question: 'Сколько стоит подача DMCA-жалобы?',
+      answer: 'От 5 000₽ за жалобу на маркетплейсы, от 7 000₽ за DMCA-жалобу на Google/YouTube. Зависит от количества площадок и объёма контента для удаления. Сделаем расчёт за 15 минут.'
+    },
+    {
+      question: 'Сроки выполнения?',
+      answer: 'Обычно 1–14 дней в зависимости от площадки. Точный график — после брифа и анализа нарушений.'
+    },
+    {
+      question: 'Какие гарантии?',
+      answer: 'Гарантируем юридически корректную подачу жалоб, полное сопровождение до удаления контента, защиту ваших прав на всех площадках. Есть договор и SLA.'
+    }
+  ];
+
   const faqItems = [
     {
       question: 'Что такое DMCA и как работает DMCA-жалоба?',
@@ -131,6 +147,21 @@ export default function DMCABlokirovkaPage() {
         <meta name="description" content="Подача DMCA жалоб правообладателя. Удаление контента с Wildberries, Ozon, Avito, YouTube. Блокировка пиратских копий. Консультация от 5000₽." />
         <meta name="keywords" content="dmca жалоба, жалоба правообладателя, подать жалобу правообладателю, dmca, удаление контента, блокировка контента, жалоба правообладателя вайлдберриз, жалоба правообладателя авито, dmca youtube" />
       </Helmet>
+      
+      <StructuredData 
+        type="Service" 
+        data={{
+          name: 'DMCA-жалобы и блокировка контента',
+          description: 'Удаление пиратского контента с площадок',
+          serviceType: 'LegalService',
+          priceRange: '5000',
+          url: 'https://yoursite.com/uslugi/dmca-blokirovka'
+        }}
+      />
+      <StructuredData 
+        type="FAQPage" 
+        data={{ questions: serviceFaqItems }}
+      />
       
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
         <Header onContactClick={handleContactClick} />

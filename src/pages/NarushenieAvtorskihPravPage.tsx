@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import StructuredData from '@/components/StructuredData';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 
@@ -59,6 +60,21 @@ export default function NarushenieAvtorskihPravPage() {
     }
   ];
 
+  const serviceFaqItems = [
+    {
+      question: 'Сколько стоит защита от обвинений в нарушении авторских прав?',
+      answer: 'Цена от 5 000 ₽. Зависит от стадии (претензия, суд) и сложности дела. Сделаем расчёт за 15 минут.'
+    },
+    {
+      question: 'Сроки выполнения?',
+      answer: 'Обычно 3–14 дней для досудебного урегулирования. Точный график — после брифа и анализа дела.'
+    },
+    {
+      question: 'Какие гарантии?',
+      answer: 'Снижение претензий в 5-10 раз или полный отказ истца. Есть договор и детальная стратегия защиты.'
+    }
+  ];
+
   const faqItems = [
     {
       question: 'Что делать, если пришла претензия о нарушении авторских прав?',
@@ -89,6 +105,20 @@ export default function NarushenieAvtorskihPravPage() {
         <meta name="description" content="Ответственность за нарушение авторских прав: уголовная и гражданская. Помощь при обвинениях, защита в суде. Консультация от 5000₽." />
         <meta name="keywords" content="нарушение авторских прав, ответственность за нарушение авторских прав, защита авторских прав, суд авторские права, статья 146 ук рф, компенсация за нарушение авторских прав" />
       </Helmet>
+
+      <StructuredData 
+        type="Service" 
+        data={{
+          name: 'Защита от обвинений в нарушении авторских прав',
+          serviceType: 'Нарушение авторских прав',
+          priceRange: '5000'
+        }}
+      />
+      
+      <StructuredData 
+        type="FAQPage" 
+        data={{ items: serviceFaqItems }}
+      />
       
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
         <Header onContactClick={handleContactClick} />

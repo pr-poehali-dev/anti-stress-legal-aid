@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import StructuredData from '@/components/StructuredData';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -119,6 +120,21 @@ export default function IntellektualnayaSobstvennostPage() {
     { step: '6', title: 'Защита', desc: 'При нарушениях: претензии, переговоры, суд, взыскание компенсации' }
   ];
 
+  const serviceFaqItems = [
+    {
+      question: 'Сколько стоит защита интеллектуальной собственности?',
+      answer: 'От 10 000 ₽ за консультацию, от 40 000 ₽ за регистрацию или защиту прав. Зависит от типа объекта ИС, сложности задачи и объёма работ. Сделаем расчёт за 15 минут.'
+    },
+    {
+      question: 'Сроки выполнения?',
+      answer: 'Обычно 2 недели—1 год в зависимости от объекта. Точный график — после брифа и анализа вашей ситуации.'
+    },
+    {
+      question: 'Какие гарантии?',
+      answer: 'Гарантируем профессиональное сопровождение на всех этапах, комплексный подход к защите всех видов ИС, конфиденциальность. Есть договор и SLA.'
+    }
+  ];
+
   const faq = [
     {
       q: 'Что такое интеллектуальная собственность?',
@@ -153,6 +169,21 @@ export default function IntellektualnayaSobstvennostPage() {
         <meta name="description" content="Защита интеллектуальной собственности: авторские права, товарные знаки, патенты. Регистрация прав, судебная защита, лицензии, аудит ИС." />
         <meta name="keywords" content="интеллектуальная собственность, защита интеллектуальной собственности, юрист по интеллектуальной собственности, авторские права, патент, товарный знак, регистрация прав, нарушение интеллектуальной собственности, лицензионный договор" />
       </Helmet>
+      
+      <StructuredData 
+        type="Service" 
+        data={{
+          name: 'Юрист по интеллектуальной собственности',
+          description: 'Защита ИС: авторские права, товарные знаки, патенты',
+          serviceType: 'LegalService',
+          priceRange: '10000',
+          url: 'https://yoursite.com/uslugi/intellektualnaya-sobstvennost'
+        }}
+      />
+      <StructuredData 
+        type="FAQPage" 
+        data={{ questions: serviceFaqItems }}
+      />
 
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
         <Header onContactClick={() => openModal('ip', 'Связаться с юристом')} />
