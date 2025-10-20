@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
@@ -35,7 +36,15 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50 relative overflow-hidden">
+    <>
+      <Helmet>
+        <title>Юрист по авторским правам и интеллектуальной собственности | Защита прав</title>
+        <meta name="description" content="Юрист по защите авторских прав, товарных знаков и интеллектуальной собственности. Регистрация ТЗ, судебная защита, DMCA, аудит бизнеса. Опыт 10+ лет, 200+ выигранных дел." />
+        <meta name="keywords" content="юрист по авторским правам, защита авторских прав, товарный знак регистрация, интеллектуальная собственность юрист, нарушение авторских прав, dmca жалоба, юрист для маркетплейса, патент регистрация, защита интеллектуальной собственности" />
+        <link rel="canonical" href="https://yoursite.com/" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50 relative overflow-hidden">
       {/* Декоративные элементы фона */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Большие круги с анимацией */}
@@ -92,6 +101,6 @@ export default function Index() {
         {/* ИИ Агент */}
         <AIAgent />
       </div>
-    </div>
+    </>
   );
 }

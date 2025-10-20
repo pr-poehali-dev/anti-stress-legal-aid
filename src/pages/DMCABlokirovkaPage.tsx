@@ -1,22 +1,15 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { ArrowLeft, ShieldAlert, FileCheck, Trash2, Clock, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 
 export default function DMCABlokirovkaPage() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    document.title = 'DMCA жалоба: блокировка контента, удаление с сайтов и маркетплейсов | Интелект';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Подача DMCA жалоб правообладателя. Удаление контента с Wildberries, Ozon, Avito, YouTube. Блокировка пиратских копий. Консультация от 5000₽.');
-    }
-  }, []);
 
   const handleContactClick = () => {
     window.open('https://t.me/your_telegram', '_blank');
@@ -132,8 +125,16 @@ export default function DMCABlokirovkaPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      <Header onContactClick={handleContactClick} />
+    <>
+      <Helmet>
+        <title>DMCA жалоба: блокировка контента, удаление с сайтов и маркетплейсов | Интелект</title>
+        <meta name="description" content="Подача DMCA жалоб правообладателя. Удаление контента с Wildberries, Ozon, Avito, YouTube. Блокировка пиратских копий. Консультация от 5000₽." />
+        <meta name="keywords" content="dmca жалоба, жалоба правообладателя, подать жалобу правообладателю, dmca, удаление контента, блокировка контента, жалоба правообладателя вайлдберриз, жалоба правообладателя авито, dmca youtube" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+        <Header onContactClick={handleContactClick} />
+        <Breadcrumbs />
 
       {/* Hero Section */}
       <section className="pt-24 pb-12 md:pt-32 md:pb-16">
@@ -372,7 +373,8 @@ export default function DMCABlokirovkaPage() {
         </div>
       </section>
 
-      <Footer onContactClick={handleContactClick} />
-    </div>
+        <Footer onContactClick={handleContactClick} />
+      </div>
+    </>
   );
 }

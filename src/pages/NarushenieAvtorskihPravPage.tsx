@@ -1,22 +1,15 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { ArrowLeft, Scale, AlertTriangle, Shield, FileText, Gavel, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 
 export default function NarushenieAvtorskihPravPage() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    document.title = 'Нарушение авторских прав: ответственность, суд, защита | Интелект';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Ответственность за нарушение авторских прав: уголовная и гражданская. Помощь при обвинениях, защита в суде. Консультация от 5000₽.');
-    }
-  }, []);
 
   const handleContactClick = () => {
     window.open('https://t.me/your_telegram', '_blank');
@@ -90,8 +83,16 @@ export default function NarushenieAvtorskihPravPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-      <Header onContactClick={handleContactClick} />
+    <>
+      <Helmet>
+        <title>Нарушение авторских прав: ответственность, суд, защита | Интелект</title>
+        <meta name="description" content="Ответственность за нарушение авторских прав: уголовная и гражданская. Помощь при обвинениях, защита в суде. Консультация от 5000₽." />
+        <meta name="keywords" content="нарушение авторских прав, ответственность за нарушение авторских прав, защита авторских прав, суд авторские права, статья 146 ук рф, компенсация за нарушение авторских прав" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+        <Header onContactClick={handleContactClick} />
+        <Breadcrumbs />
 
       {/* Hero Section */}
       <section className="pt-24 pb-12 md:pt-32 md:pb-16">
@@ -322,7 +323,8 @@ export default function NarushenieAvtorskihPravPage() {
         </div>
       </section>
 
-      <Footer onContactClick={handleContactClick} />
-    </div>
+        <Footer onContactClick={handleContactClick} />
+      </div>
+    </>
   );
 }
