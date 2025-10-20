@@ -101,6 +101,7 @@ export default function Index() {
         {/* ИИ Агент */}
         <AIAgent />
       </div>
+      </div>
     </>
   );
 }
