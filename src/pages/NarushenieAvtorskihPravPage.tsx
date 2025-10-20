@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import StructuredData from '@/components/StructuredData';
+import OpenGraphTags from '@/components/OpenGraphTags';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 
