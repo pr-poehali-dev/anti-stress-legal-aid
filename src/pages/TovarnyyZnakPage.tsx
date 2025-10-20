@@ -151,13 +151,13 @@ export default function TovarnyyZnakPage() {
         <meta property="og:url" content="https://intelect.pro/uslugi/tovarnyy-znak" />
         <meta property="og:title" content="Регистрация и защита товарного знака — Интелект" />
         <meta property="og:description" content="Регистрация под ключ от 60 000₽. Проверка, подача в Роспатент за 10-14 месяцев." />
-        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/9186b880-7bad-4ed0-beff-57f3ae426cb6.jpg" />
         <meta property="og:locale" content="ru_RU" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Регистрация товарного знака" />
         <meta name="twitter:description" content="Под ключ от 60 000₽ за 3 класса МКТУ. Полное сопровождение в Роспатенте: проверка, подача, получение свидетельства." />
-        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/9186b880-7bad-4ed0-beff-57f3ae426cb6.jpg" />
       </Helmet>
       
       <StructuredData 

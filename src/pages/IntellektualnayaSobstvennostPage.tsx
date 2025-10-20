@@ -175,13 +175,13 @@ export default function IntellektualnayaSobstvennostPage() {
         <meta property="og:url" content="https://intelect.pro/uslugi/intellektualnaya-sobstvennost" />
         <meta property="og:title" content="Юрист по интеллектуальной собственности — Интелект" />
         <meta property="og:description" content="Консультация от 10 000₽. Регистрация прав от 40 000₽. Защита авторских прав, ТЗ, патентов." />
-        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/298ad6e6-618b-4f04-8ce3-bc50f387c13a.jpg" />
         <meta property="og:locale" content="ru_RU" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Юрист по интеллектуальной собственности" />
         <meta name="twitter:description" content="Защита авторских прав, ТЗ, патентов. Консультация от 10 000₽, регистрация от 40 000₽. Полное сопровождение ИС." />
-        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/298ad6e6-618b-4f04-8ce3-bc50f387c13a.jpg" />
       </Helmet>
       
       <StructuredData 

@@ -112,14 +112,14 @@ export default function NarushenieAvtorskihPravPage() {
         <meta property="og:url" content="https://intelect.pro/uslugi/zashchita-avtorskih-prav/sud-otvetstvennost" />
         <meta property="og:title" content="Защита от обвинений в нарушении авторских прав — Интелект" />
         <meta property="og:description" content="Получили претензию? Защитим от необоснованных обвинений, снизим компенсацию в 5-10 раз. Консультация от 5000₽." />
-        <meta property="og:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta property="og:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/5435c177-5caa-4b5e-845b-8cf59743dbaf.jpg" />
         <meta property="og:locale" content="ru_RU" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Защита от обвинений в нарушении авторских прав" />
         <meta name="twitter:description" content="Защитим от претензий, снизим компенсацию в 5-10 раз. От 5000₽." />
-        <meta name="twitter:image" content="https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png" />
+        <meta name="twitter:image" content="https://cdn.poehali.dev/projects/51eac140-1a22-4455-a98d-1a3cfaa64533/files/5435c177-5caa-4b5e-845b-8cf59743dbaf.jpg" />
       </Helmet>
 
       <StructuredData 
