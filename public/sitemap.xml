@@ -8,8 +8,8 @@
 
   <!-- Главная страница -->
   <url>
-    <loc>https://yourdomain.com/</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     
@@ -21,25 +21,25 @@
     </image:image>
     
     <image:image>
-      <image:loc>https://yourdomain.com/img/ddb7af76-0d7c-45f8-96b8-1e7c200c6fab.jpg</image:loc>
+      <image:loc>https://intelect.pro/img/ddb7af76-0d7c-45f8-96b8-1e7c200c6fab.jpg</image:loc>
       <image:title>Профессиональная юридическая консультация</image:title>
       <image:caption>Главная страница - юридические услуги по авторским правам</image:caption>
     </image:image>
     
     <image:image>
-      <image:loc>https://yourdomain.com/img/62ca6091-9ecc-4110-a055-0f51b3d3149d.jpg</image:loc>
+      <image:loc>https://intelect.pro/img/62ca6091-9ecc-4110-a055-0f51b3d3149d.jpg</image:loc>
       <image:title>Юридическая помощь при получении претензий</image:title>
       <image:caption>Консультация и анализ претензий по авторским правам</image:caption>
     </image:image>
     
     <image:image>
-      <image:loc>https://yourdomain.com/img/5bd158e9-1dc0-469e-8490-735099fcabac.jpg</image:loc>
+      <image:loc>https://intelect.pro/img/5bd158e9-1dc0-469e-8490-735099fcabac.jpg</image:loc>
       <image:title>Успешные кейсы защиты авторских прав</image:title>
       <image:caption>Примеры успешного решения споров по авторским правам</image:caption>
     </image:image>
     
     <image:image>
-      <image:loc>https://yourdomain.com/img/5698e954-1a58-4645-ace4-c4c3d117dbea.jpg</image:loc>
+      <image:loc>https://intelect.pro/img/5698e954-1a58-4645-ace4-c4c3d117dbea.jpg</image:loc>
       <image:title>Часто задаваемые вопросы по авторским правам</image:title>
       <image:caption>Ответы на популярные вопросы о защите авторских прав</image:caption>
     </image:image>
@@ -47,178 +47,60 @@
 
   <!-- Секции главной страницы -->
   <url>
-    <loc>https://yourdomain.com/#services</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#services</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#pricing</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#pricing</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#how-it-works</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#how-it-works</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#benefits</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#benefits</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#faq</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#faq</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#stats</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#stats</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://yourdomain.com/#testimonials</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/#testimonials</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Страница блога -->
   <url>
-    <loc>https://yourdomain.com/#blog</loc>
-    <lastmod>2025-10-12</lastmod>
+    <loc>https://intelect.pro/blog</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-  </url>
-
-  <!-- Статьи блога (новые) -->
-  <url>
-    <loc>https://yourdomain.com/#blog/chto-delat-pri-poluchenii-pretenzii</loc>
-    <lastmod>2025-10-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    
-    <image:image>
-      <image:loc>https://yourdomain.com/img/102596f0-6f15-4541-a71b-4d61c9611872.jpg</image:loc>
-      <image:title>Получили претензию по авторским правам? Пошаговая инструкция</image:title>
-      <image:caption>Юридическая консультация по претензиям авторских прав</image:caption>
-    </image:image>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/#blog/kak-dokazat-avtorstvo</loc>
-    <lastmod>2025-10-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/#blog/sroki-iskovoy-davnosti</loc>
-    <lastmod>2025-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/#blog/zashita-v-internete</loc>
-    <lastmod>2025-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/#blog/kompensaciya-za-narushenie</loc>
-    <lastmod>2025-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/#blog/dosudebnoe-uregulirovanie</loc>
-    <lastmod>2025-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Старые статьи блога (для сохранения индексации) -->
-  <url>
-    <loc>https://yourdomain.com/blog/chto-delat-esli-vam-prishla-pretenziya-po-avtorskim-pravam</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    
-    <image:image>
-      <image:loc>https://yourdomain.com/img/102596f0-6f15-4541-a71b-4d61c9611872.jpg</image:loc>
-      <image:title>Получили претензию по авторским правам? Пошаговая инструкция</image:title>
-      <image:caption>Юридическая консультация по претензиям авторских прав</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/blog/kak-fotostoki-i-agentstva-zavyshayut-summy-ushcherba</loc>
-    <lastmod>2025-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    
-    <image:image>
-      <image:loc>https://yourdomain.com/img/21d3faee-9dfc-4d04-b384-473fafdda2c1.jpg</image:loc>
-      <image:title>Авторские права на фотографии для бизнеса</image:title>
-      <image:caption>Защита бизнеса от нарушений авторских прав на фотографии</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/blog/avtorskie-prava-na-izobrazheniya-chto-nuzhno-znat-biznesu</loc>
-    <lastmod>2025-09-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    
-    <image:image>
-      <image:loc>https://yourdomain.com/img/413072e0-2699-44ab-a1e0-9f35e18a06ce.jpg</image:loc>
-      <image:title>Размер компенсации за нарушение авторских прав</image:title>
-      <image:caption>Расчет компенсации и способы снижения выплат</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/blog/kak-otvechat-na-pretenzii-shablony-i-primery</loc>
-    <lastmod>2025-09-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Категории блога -->
-  <url>
-    <loc>https://yourdomain.com/blog/category/instrukcii</loc>
-    <lastmod>2025-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/blog/category/praktika</loc>
-    <lastmod>2025-10-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourdomain.com/blog/category/obuchenie</loc>
-    <lastmod>2025-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
   
 </urlset>
