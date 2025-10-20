@@ -84,104 +84,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LegalService",
-      "name": "ПравоПомощь 24/7",
-      "alternateName": "Защита авторских прав 24/7",
-      "description": "Профессиональная защита авторских прав в России. Анализ претензий за 24-48 часов от 5000₽. Консультации, представительство в суде. Работаем круглосуточно.",
-      "url": "https://intelect.pro",
-      "sameAs": [
-        "https://t.me/pravopomosh247",
-        "https://vk.com/pravopomosh247"
-      ],
-      "logo": "https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png",
-      "image": "https://cdn.poehali.dev/files/9f862400-252f-44a3-b612-fddd201cb3b6.png",
-      "telephone": "+7-XXX-XXX-XX-XX",
-      "email": "info@pravopomosh247.ru",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+7-XXX-XXX-XX-XX",
-        "contactType": "customer service",
-        "availableLanguage": "Russian",
-        "hoursAvailable": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "09:00",
-          "closes": "21:00"
-        }
+      "@type": "Service",
+      "name": "Защита авторских прав",
+      "provider": {
+        "@type": "Organization",
+        "name": "Интелект"
       },
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "RU",
-        "addressLocality": "Москва",
-        "addressRegion": "Московская область"
-      },
-      "serviceType": [
-        "Защита авторских прав",
-        "Анализ претензий по авторским правам", 
-        "Юридические консультации",
-        "Представительство в суде",
-        "Защита интеллектуальной собственности",
-        "Правовая экспертиза документов"
-      ],
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Россия"
-        },
-        {
-          "@type": "City", 
-          "name": "Москва"
-        },
-        {
-          "@type": "City",
-          "name": "Санкт-Петербург"
-        }
-      ],
-      "availableLanguage": "ru",
-      "openingHours": "Mo-Su 09:00-21:00",
-      "priceRange": "от 5000₽",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Юридические услуги по авторским правам",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Анализ претензии по авторским правам",
-              "description": "Профессиональный анализ претензии с письменным заключением и 30-минутной консультацией. Результат за 24-48 часов.",
-              "serviceType": "Правовая экспертиза"
-            },
-            "price": "5000",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2024-01-01",
-            "priceValidUntil": "2025-12-31"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service", 
-              "name": "Консультация по защите авторских прав",
-              "description": "Бесплатная предварительная консультация по вопросам авторских прав"
-            },
-            "price": "0",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock"
-          }
-        ]
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "127",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Юрист-специалист по авторским правам"
+      "areaServed": "RU",
+      "serviceType": "Анализ претензий по авторским правам",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "price": "5000",
+        "availability": "https://schema.org/InStock"
       }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит анализ претензии по авторским правам?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Цена от 5000 ₽. Зависит от сложности претензии и объёма документов. Сделаем расчёт за 15 минут."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сроки выполнения?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Анализ претензии — 1-2 дня. Досудебное урегулирование — от 3 дней до 2 недель. Судебный процесс — от 1 до 3 месяцев. Точный график — после консультации."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие гарантии?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Письменное заключение с юридическим обоснованием, план защиты и рекомендации. Есть договор на оказание услуг."
+          }
+        }
+      ]
     }
     </script>
 
@@ -199,7 +148,7 @@
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://yourdomain.com/search?q={search_term_string}",
+        "target": "https://intelect.pro/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
