@@ -7,6 +7,9 @@ import Index from "./pages/Index";
 import BlogPage from "./pages/BlogPage";
 import NarushenieAvtorskihPravPage from "./pages/NarushenieAvtorskihPravPage";
 import DMCABlokirovkaPage from "./pages/DMCABlokirovkaPage";
+import RiskovyeBiznesyPage from "./pages/RiskovyeBiznesyPage";
+import TovarnyyZnakPage from "./pages/TovarnyyZnakPage";
+import IntellektualnayaSobstvennostPage from "./pages/IntellektualnayaSobstvennostPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +25,9 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/uslugi/zashchita-avtorskih-prav/sud-otvetstvennost" element={<NarushenieAvtorskihPravPage />} />
           <Route path="/uslugi/zashchita-avtorskih-prav/blokirovka-i-udaleniya" element={<DMCABlokirovkaPage />} />
+          <Route path="/uslugi/riskovye-biznesy" element={<RiskovyeBiznesyPage />} />
+          <Route path="/uslugi/tovarnyy-znak" element={<TovarnyyZnakPage />} />
+          <Route path="/uslugi/intellektualnaya-sobstvennost" element={<IntellektualnayaSobstvennostPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
