@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import StructuredData from '@/components/StructuredData';
 import Header from '@/components/sections/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
@@ -43,6 +44,9 @@ export default function Index() {
         <meta name="keywords" content="юрист по авторским правам, защита авторских прав, товарный знак регистрация, интеллектуальная собственность юрист, нарушение авторских прав, dmca жалоба, юрист для маркетплейса, патент регистрация, защита интеллектуальной собственности" />
         <link rel="canonical" href="https://yoursite.com/" />
       </Helmet>
+      
+      <StructuredData type="Organization" />
+      <StructuredData type="WebSite" />
       
       <div className="min-h-screen bg-gradient-to-b from-blue-50 via-blue-100 to-professional-50 relative overflow-hidden">
       {/* Декоративные элементы фона */}

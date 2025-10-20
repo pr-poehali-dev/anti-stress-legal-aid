@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import StructuredData from '@/components/StructuredData';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -108,6 +109,7 @@ export default function RiskovyeBiznesyPage() {
         <meta name="description" content="Проверка бизнеса на авторские права, товарные знаки, рекламное законодательство. Аудит маркетплейсов, соцсетей, инфобизнеса. Защита от блокировок." />
         <meta name="keywords" content="юрист для маркетплейса, юрист для вайлдберриз, юрист для озон, юрист для инфобизнеса, проверка бизнеса на нарушения, аудит маркетплейса, разблокировка магазина, защита селлера, юридическая проверка бизнеса, авторские права маркетплейс" />
       </Helmet>
+      <StructuredData type="Service" data={{ name: 'Юридическое сопровождение рисковых бизнесов', description: 'Аудит маркетплейсов, инфобизнеса', priceRange: '30000-300000', url: 'https://yoursite.com/uslugi/riskovye-biznesy' }} />
 
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
         <Header onContactClick={() => openModal('risky-business', 'Связаться с юристом')} />

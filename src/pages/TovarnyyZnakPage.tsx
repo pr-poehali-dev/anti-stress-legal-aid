@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import StructuredData from '@/components/StructuredData';
 import Header from '@/components/sections/Header';
 import Footer from '@/components/sections/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -129,6 +130,26 @@ export default function TovarnyyZnakPage() {
         <meta name="description" content="Регистрация товарного знака под ключ от 60 000 ₽. Проверка ТЗ, подача заявки в Роспатент, защита от нарушений. Срок регистрации 10-14 месяцев." />
         <meta name="keywords" content="регистрация товарного знака, проверка товарного знака, как зарегистрировать товарный знак, товарный знак стоимость, регистрация товарного знака роспатент, товарный знак под ключ, защита товарного знака, нарушение товарного знака, споры о товарных знаках" />
       </Helmet>
+      
+      <StructuredData 
+        type="Service" 
+        data={{
+          name: 'Регистрация и защита товарного знака',
+          description: 'Регистрация ТЗ в Роспатенте, проверка, защита прав',
+          priceRange: '15000-150000',
+          url: 'https://yoursite.com/uslugi/tovarnyy-znak'
+        }}
+      />
+      <StructuredData 
+        type="BreadcrumbList" 
+        data={{
+          items: [
+            { name: 'Главная', url: 'https://yoursite.com/' },
+            { name: 'Услуги', url: 'https://yoursite.com/#services' },
+            { name: 'Товарный знак', url: 'https://yoursite.com/uslugi/tovarnyy-znak' }
+          ]
+        }}
+      />
 
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
         <Header onContactClick={() => openModal('trademark', 'Связаться с юристом')} />
